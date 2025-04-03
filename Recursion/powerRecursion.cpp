@@ -11,7 +11,7 @@ int pow(int m, int n) {
     }
 }
 
-// Number of Recursive call is reduced
+// Number of Recursive call is reduced here
 int Rpow(int m, int n) {
     if (n == 0) {
         return 1;
