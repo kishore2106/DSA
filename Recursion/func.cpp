@@ -1,4 +1,4 @@
-// Example Func for Recursion
+// Example Tail Recursion
 
 #include<iostream>
 using namespace std;
