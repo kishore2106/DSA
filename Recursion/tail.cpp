@@ -4,8 +4,8 @@
 using namespace std;
 
 void func(int n) {
-    if (n > 0){
-        cout << n << endl; 
+    if (n > 0){ // base condition
+        cout << n << endl; // Calling phase
         func(n - 1);
     }
 }
