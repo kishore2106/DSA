@@ -12,7 +12,7 @@ double e(int x, int n) {
         r = e(x, n-1);
         p = p * x;
         f = f * n;
-        return r + p/f;
+        return r + (p/f);
     }
 }
 
