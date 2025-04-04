@@ -3,6 +3,7 @@
 #include<iostream>
 using namespace std;
 
+// Recursion
 double e(int x, int n) {
     static double s;
     if (n == 0) {
@@ -15,9 +16,20 @@ double e(int x, int n) {
 
 // Loop
 double Ie(int x, int n) {
+    // double s = 1;
+    // for ( n ; n > 0; n --) {
+    //     s = 1 + x* s/n;
+    // }
+    // return s;
+
     double s = 1;
-    for ( n ; n > 0; n --) {
-        s = 1 + x* s/n;
+    int i;
+    double num = 1, den = 1;
+
+    for (i=1; i<=n; i++) {
+        num *= x;
+        den *= i;
+        s += num/den;
     }
     return s;
 }
