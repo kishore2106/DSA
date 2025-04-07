@@ -167,6 +167,20 @@ int RBinarySearch(struct Array arr, int l, int h, int key) {
     return -1;
 }
 
+// Reversing Array using Auxilary Array
+void Reverse(struct Array *arr) {
+    int *B;
+    int i, j;
+
+    B = new int[arr->length];
+    for(i=arr->length-1, j=0; i>=0; i--,j++){
+        B[j] = arr->A[i];
+    }
+    for(i=0; i<arr->length; i++){
+        arr->A[i] = B[i];
+    }
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     // int i, n;
@@ -176,7 +190,12 @@ int main(){
     // display(arr);
     // cout<<LinearSearch(&arr, 4)<<endl;
     // cout<<BinarySearch(arr, 8)<<endl;
-    cout<<RBinarySearch(arr, 0, arr.length, 4)<<endl;
+    // cout<<RBinarySearch(arr, 0, arr.length, 4)<<endl;
+    // cout<<Get(arr, 3)<<endl;
+    // Set(&arr, 3, 9);
+    // cout<<Max(arr)<<" "<<Min(arr)<<endl;
+    // cout<<Sum(arr)<<" "<<Average(arr)<<endl;
+    Reverse(&arr);
 
     display(arr);
 
