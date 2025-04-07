@@ -126,6 +126,11 @@ int Sum(struct Array arr) {
     return sum;
 }
 
+// Average
+float Average(struct Array arr) {
+    return (float)Sum(arr)/arr.length;
+}
+
 // Binary Search using Loop
 int BinarySearch(struct Array arr, int key){
     int l, mid, h;
