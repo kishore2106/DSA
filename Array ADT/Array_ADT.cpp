@@ -38,11 +38,27 @@ void insert(struct Array *arr, int index, int x) {
     }
 }
 
+// Delete
+int Delete(struct Array *arr, int index) {
+    int x = 0;
+    if(index >= 0 && index <= arr->length){
+        x = arr->A[index];
+        for(int i=index; i<arr->length-1; i++) {
+            arr->A[i] = arr->A[i+1];
+        }
+        arr->length--;
+        return x;
+    }
+
+    return 0;
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     int i, n;
     append(&arr, 7);
     insert(&arr, 2, 9);
+    cout<<Delete(&arr, 1)<<endl;
     display(arr);
 
     return 0;
