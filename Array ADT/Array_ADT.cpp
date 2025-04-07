@@ -207,6 +207,24 @@ void RightShit(struct Array *arr) {
     arr->A[0] = 0;
 }
 
+// Left Rotate
+void LeftRotate(struct Array *arr) {
+    int temp = arr->A[0];
+    for(int i=1; i<arr->length; i++) {
+        arr->A[i-1]=arr->A[i];
+    }
+    arr->A[arr->length-1] = temp;
+}
+
+// Right Rotate
+void RightRotate(struct Array *arr) {
+    int temp = arr->A[arr->length-1];
+    for(int i=arr->length-1; i>0; i--) {
+        arr->A[i]=arr->A[i-1];
+    }
+    arr->A[0] = temp;
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     // int i, n;
@@ -223,7 +241,9 @@ int main(){
     // cout<<Sum(arr)<<" "<<Average(arr)<<endl;
     // Reverse2(&arr);
     // LeftShit(&arr);
-    RightShit(&arr);
+    // RightShit(&arr);
+    // LeftRotate(&arr);
+    RightRotate(&arr);
 
     display(arr);
 
