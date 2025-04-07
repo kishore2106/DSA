@@ -18,11 +18,19 @@ void display(struct Array arr){
     }
 }
 
+// Append
+void append(struct Array *arr, int x){
+    if(arr->length < arr->size){
+        arr->A[arr->length++] = x;
+    }
+
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     int i, n;
-
+    append(&arr, 7);
     display(arr);
-
+    
     return 0;
 }
