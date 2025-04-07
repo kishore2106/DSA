@@ -225,8 +225,20 @@ void RightRotate(struct Array *arr) {
     arr->A[0] = temp;
 }
 
+// Inserting an element into Sorted Array
+void InsertSort(struct Array *arr, int x) {
+    int i = arr->length-1;
+    if (arr->length == arr->size) return;
+    while(i>=0 && arr->A[i]>x){
+        arr->A[i+1] = arr->A[i];
+        i--;
+    }
+    arr->A[i+1]=x;
+    arr->length++;
+}
+
 int main(){
-    struct Array arr={{2,3,4,5,6},20,5};
+    struct Array arr={{2,3,4,5,6,10,15},20,7};
     // int i, n;
     // append(&arr, 7);
     // insert(&arr, 2, 9);
@@ -243,7 +255,8 @@ int main(){
     // LeftShit(&arr);
     // RightShit(&arr);
     // LeftRotate(&arr);
-    RightRotate(&arr);
+    // RightRotate(&arr);
+    InsertSort(&arr, 4);
 
     display(arr);
 
