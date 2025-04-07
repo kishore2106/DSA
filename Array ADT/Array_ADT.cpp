@@ -191,6 +191,22 @@ void Reverse2(struct Array *arr) {
     }
 }
 
+// Left Shift
+void LeftShit(struct Array *arr) {
+    for(int i=1; i<arr->length; i++) {
+        arr->A[i-1]=arr->A[i];
+    }
+    arr->A[arr->length-1] = 0;
+}
+
+// Right Shift
+void RightShit(struct Array *arr) {
+    for(int i=arr->length-1; i>0; i--) {
+        arr->A[i]=arr->A[i-1];
+    }
+    arr->A[0] = 0;
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     // int i, n;
@@ -205,7 +221,9 @@ int main(){
     // Set(&arr, 3, 9);
     // cout<<Max(arr)<<" "<<Min(arr)<<endl;
     // cout<<Sum(arr)<<" "<<Average(arr)<<endl;
-    Reverse2(&arr);
+    // Reverse2(&arr);
+    // LeftShit(&arr);
+    RightShit(&arr);
 
     display(arr);
 
