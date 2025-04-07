@@ -116,6 +116,16 @@ int Min(struct Array arr) {
     return min;
 }
 
+// Sum
+int Sum(struct Array arr) {
+    int sum = 0;
+    int i;
+    for (i=0; i<arr.length; i++){
+        sum = sum + arr.A[i];
+    }
+    return sum;
+}
+
 // Binary Search using Loop
 int BinarySearch(struct Array arr, int key){
     int l, mid, h;
