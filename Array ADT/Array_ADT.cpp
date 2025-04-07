@@ -67,7 +67,10 @@ int LinearSearch(struct Array *arr, int key){
     for(i=0; i<arr->length; i++){
         if(key == arr->A[i]){
             // Transposition
-            Swap(&arr->A[i], &arr->A[i-1]);
+            // Swap(&arr->A[i], &arr->A[i-1]);
+
+            // Move to Front/Head
+            Swap(&arr->A[0], &arr->A[i]);
             return i;
         }
     }
@@ -80,7 +83,8 @@ int main(){
     // append(&arr, 7);
     // insert(&arr, 2, 9);
     // cout<<Delete(&arr, 1)<<endl;
-    cout<<LinearSearch(&arr, 7)<<endl;
+    display(arr);
+    cout<<LinearSearch(&arr, 4)<<endl;
 
 
     display(arr);
