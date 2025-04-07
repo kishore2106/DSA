@@ -77,7 +77,7 @@ int LinearSearch(struct Array *arr, int key){
     return -1;
 }
 
-// Binary Search
+// Binary Search using Loop
 int BinarySearch(struct Array arr, int key){
     int l, mid, h;
     l = 0;
@@ -96,6 +96,23 @@ int BinarySearch(struct Array arr, int key){
     return -1;
 }
 
+// Binary Search using Recursion
+int RBinarySearch(struct Array arr, int l, int h, int key) {
+    int mid;
+
+    if(l <= h) {
+        mid = (l+h)/2;
+        if(key == arr.A[mid]){
+            return mid;
+        } else if(key < arr.A[mid]) {
+            return RBinarySearch(arr, l, mid-1, key);
+        } else {
+            return RBinarySearch(arr, mid+1, h, key);
+        }
+    }
+    return -1;
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     // int i, n;
@@ -104,7 +121,8 @@ int main(){
     // cout<<Delete(&arr, 1)<<endl;
     // display(arr);
     // cout<<LinearSearch(&arr, 4)<<endl;
-    cout<<BinarySearch(arr, 8)<<endl;
+    // cout<<BinarySearch(arr, 8)<<endl;
+    cout<<RBinarySearch(arr, 0, arr.length, 4)<<endl;
 
     display(arr);
 
