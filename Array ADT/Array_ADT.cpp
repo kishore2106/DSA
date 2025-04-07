@@ -181,6 +181,16 @@ void Reverse(struct Array *arr) {
     }
 }
 
+// Reversing Array using 2 Pointers
+void Reverse2(struct Array *arr) {
+    int i, j, temp;
+    for(i=0, j=arr->length-1; i<j; i++, j--) {
+        temp = arr->A[i];
+        arr->A[i] = arr->A[j];
+        arr->A[j] = temp;
+    }
+}
+
 int main(){
     struct Array arr={{2,3,4,5,6},20,5};
     // int i, n;
@@ -195,7 +205,7 @@ int main(){
     // Set(&arr, 3, 9);
     // cout<<Max(arr)<<" "<<Min(arr)<<endl;
     // cout<<Sum(arr)<<" "<<Average(arr)<<endl;
-    Reverse(&arr);
+    Reverse2(&arr);
 
     display(arr);
 
