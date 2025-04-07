@@ -237,8 +237,18 @@ void InsertSort(struct Array *arr, int x) {
     arr->length++;
 }
 
+// Given Array is sorted or not
+int isSorted(struct Array arr){
+    int i;
+    for(i=0;i<arr.length-1;i++){
+        if(arr.A[i]>arr.A[i+1])
+        return 0;
+    }
+    return 1;
+}
+
 int main(){
-    struct Array arr={{2,3,4,5,6,10,15},20,7};
+    struct Array arr={{2,3,4,5,6,10,23,15},20,8};
     // int i, n;
     // append(&arr, 7);
     // insert(&arr, 2, 9);
@@ -256,7 +266,8 @@ int main(){
     // RightShit(&arr);
     // LeftRotate(&arr);
     // RightRotate(&arr);
-    InsertSort(&arr, 4);
+    // InsertSort(&arr, 4);
+    cout<<isSorted(arr)<<endl;
 
     display(arr);
 
