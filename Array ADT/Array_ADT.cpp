@@ -53,11 +53,21 @@ int Delete(struct Array *arr, int index) {
     return 0;
 }
 
+// Swap
+void Swap(int *i, int *j) {
+    int temp;
+    temp = *i;
+    *i = *j;
+    *j = temp; 
+}
+
 // Linear Search
 int LinearSearch(struct Array *arr, int key){
     int i;
     for(i=0; i<arr->length; i++){
         if(key == arr->A[i]){
+            // Transposition
+            Swap(&arr->A[i], &arr->A[i-1]);
             return i;
         }
     }
