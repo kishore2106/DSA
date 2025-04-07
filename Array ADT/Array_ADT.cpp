@@ -247,8 +247,21 @@ int isSorted(struct Array arr){
     return 1;
 }
 
+// Rearrage +ve and -ve
+void Rearrange(struct Array *arr){
+    int i,j;
+    i=0;
+    j=arr->length-1;
+    
+    while(i<j){
+        while(arr->A[i]<0)i++;
+        while(arr->A[j]>=0)j--;
+        if(i<j) Swap(&arr->A[i], &arr->A[j]);
+    }
+}
+
 int main(){
-    struct Array arr={{2,3,4,5,6,10,23,15},20,8};
+    struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
     // append(&arr, 7);
     // insert(&arr, 2, 9);
@@ -267,7 +280,8 @@ int main(){
     // LeftRotate(&arr);
     // RightRotate(&arr);
     // InsertSort(&arr, 4);
-    cout<<isSorted(arr)<<endl;
+    // cout<<isSorted(arr)<<endl;
+    Rearrange(&arr);
 
     display(arr);
 
