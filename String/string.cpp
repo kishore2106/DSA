@@ -106,13 +106,28 @@ void reverseString1(char *s){
     }
 }
 
+// comparing two strings
+void compareStrings(char *s1, char *s2){
+    int i,j;
+    for(i=0, j=0; s1[i]!='\0' && s2[j]!='\0'; i++,j++){
+        if(s1[i]!=s2[j]) break;
+    }
+    if(s1[i]==s2[j]){
+        cout<<"Strings are equal"<<endl;
+    } else if(s1[i] > s2[j]){
+        cout<<"String s1 is greater";
+    } else {
+        cout<<"String s1 is lesser";
+    }
+}
+
 int main() {
-    char name[] = "welcome";
-    char name1[] = "WELCOME";
-    char name2[] = "WeLcOmE";
-    char vowelCons[] = "How are you";
-    char name3[] = "kishore@123";
-    char *s1;
+    // char name[] = "welcome";
+    // char name1[] = "WELCOME";
+    // char name2[] = "WeLcOmE";
+    // char vowelCons[] = "How are you";
+    // char name3[] = "kishore@123";
+    // char *s1;
     // cout<<length(name);
     // toLower(name1);
     // toUpper(name);
@@ -127,8 +142,11 @@ int main() {
     //     cout<<"Invalid String"<<endl;
     // }
     // reverseString(name);
-    reverseString1(name);
-    cout<<name;
+    // reverseString1(name);
+    // cout<<name;
+    char s1[] = "Painter";
+    char s2[] = "Painting";
+    compareStrings(s1, s2);
 
     return 0;
 }
