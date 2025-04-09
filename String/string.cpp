@@ -182,6 +182,26 @@ void DuplicateBitwise(char *s){
    }
 }
 
+// Check for Anagram using Hash table
+void isAnagram(char *s1, char *s2){
+    int i, h[26]={0};
+    for(i=0; s1[i]!='\0'; i++){
+        h[s1[i]-97]+=1;
+    }
+
+    for(i=0; s2[i]!='\0'; i++){
+        h[s2[i]-97]-=1;
+        if(h[s2[i]-97]<0){
+            cout<<"Not an Anagram"<<endl;
+            break;
+        }
+    }
+    
+    if(s2[i]=='\0'){
+        cout<<"It is an Anagram"<<endl;
+    }
+}
+
 int main() {
     // char name[] = "welcome";
     // char name1[] = "WELCOME";
@@ -211,9 +231,12 @@ int main() {
     // char s1[]="madam";
     // cout<<isPalindrome(s1);
     // cout<<isPalindrome1(s1);
-    char s[]="finding";
+    // char s[]="finding";
     // DuplicateHash(s);
-    DuplicateBitwise(s);
+    // DuplicateBitwise(s);
+    char s1[]="verbose";
+    char s2[]="observe";
+    isAnagram(s1, s2);
 
     return 0;
 }
