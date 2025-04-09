@@ -410,6 +410,28 @@ struct Array* Difference(struct Array *arr1, struct Array *arr2) {
     return arr3;
 }
 
+// Difference of Un-Sorted Array
+struct Array* UnSortDiff(struct Array *arr1, struct Array *arr2){
+    // int i,j,k;
+    // i=j=k=0;
+    struct Array *arr3 = (struct Array*)malloc(sizeof(struct Array));
+    arr3->size = arr1->size + arr2->size;
+    arr3->length = 0;
+    bool count = false;
+    for(int i=0; i<arr1->length; i++){
+        count = false;
+        for(int j=0; j<arr2->length; j++){
+            if (arr1->A[i] == arr2->A[j]) {
+                count = true;
+            }
+        }
+        if(count == false) {
+            arr3->A[arr3->length++] = arr1->A[i];
+        }
+    }
+    return arr3;
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -439,7 +461,7 @@ int main(){
     // struct Array *arr3 = Union(&arr1, &arr2);
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
-    struct Array *arr3 = UnSortInter(&arr1, &arr2);
+    struct Array *arr3 = UnSortDiff(&arr1, &arr2);
 
 
 
