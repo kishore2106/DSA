@@ -202,6 +202,48 @@ void isAnagram(char *s1, char *s2){
     }
 }
 
+// Permutation method1
+void perm1(char s[], int k){
+    static int A[10]={0};
+    static char Res[10]={0};
+    int i;
+    if(s[k]=='\0'){
+        Res[k]='\0';
+        cout<<Res<<endl;
+    } else{
+        for(i=0; s[i]!='\0';i++){
+            if(A[i]==0){
+                Res[k]=s[i];
+                A[i]=1;
+                perm1(s, k+1);
+                A[i]=0;
+            }
+        }
+    }
+}
+
+void swap(char *s1, char *s2){
+    char temp;
+    temp = *s1;
+    *s1 = *s2;
+    *s2 = *s1;
+
+}
+
+// Permutation method2
+void perm2(char s[], int l, int h){
+    int i;
+    if(l==h){
+        cout<<s<<endl;
+    } else {
+        for(i=l;i<=h;i++){
+            swap(s[i], s[l]);
+            perm2(s, l+1, h);
+            swap(s[i], s[l]);
+        }
+    }
+}
+
 int main() {
     // char name[] = "welcome";
     // char name1[] = "WELCOME";
@@ -234,9 +276,12 @@ int main() {
     // char s[]="finding";
     // DuplicateHash(s);
     // DuplicateBitwise(s);
-    char s1[]="verbose";
-    char s2[]="observe";
-    isAnagram(s1, s2);
+    // char s1[]="verbose";
+    // char s2[]="observe";
+    // isAnagram(s1, s2);
+    char s[]="ABC";
+    // perm1(s, 0);
+    perm2(s, 0, 2);
 
     return 0;
 }
