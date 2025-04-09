@@ -121,6 +121,40 @@ void compareStrings(char *s1, char *s2){
     }
 }
 
+// Palindrome using new Array
+bool isPalindrome(char *s){
+    int i,j;
+    char s1[100];
+    for(i=0;s[i]!='\0';i++){}
+    i=i-1;
+    for(j=0;i>=0;i--,j++){
+        s1[j]=s[i];
+    }
+    s1[j]='\0';
+    cout<<s1;
+    for(i=0,j=0; s[i]!='\0' && s1[j]!='\0'; i++,j++){
+        if(s[i]!=s1[j]) break;
+    }
+    if(s[i]==s1[j]){
+        cout<<s[i]<<s[j];
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
+// Palindrome using two pointers
+bool isPalindrome1(char *s){
+    int i,j;
+    for(j=0;s[j]!='\0';j++){}
+    j=j-1;
+    for(i=0; i<j; i++,j--){
+        if(s[i]!=s[j]) return false;
+    }
+    return true;
+}
+
 int main() {
     // char name[] = "welcome";
     // char name1[] = "WELCOME";
@@ -144,9 +178,12 @@ int main() {
     // reverseString(name);
     // reverseString1(name);
     // cout<<name;
-    char s1[] = "Painter";
-    char s2[] = "Painting";
-    compareStrings(s1, s2);
+    // char s1[] = "Painter";
+    // char s2[] = "Painting";
+    // compareStrings(s1, s2);
+    char s1[]="madam";
+    // cout<<isPalindrome(s1);
+    cout<<isPalindrome1(s1);
 
     return 0;
 }
