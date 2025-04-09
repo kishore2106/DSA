@@ -168,6 +168,20 @@ void DuplicateHash(char *s){
     }
 }
 
+// Duplicate in a string using bitwise
+void DuplicateBitwise(char *s){
+   long int h=0, x=0;
+   for(int i=0; s[i]!='\0';i++){
+    x=1;
+    x=x<<(s[i]-97);
+    if(x&h){
+        cout<<s[i]<<" is Duplicate"<<endl;
+    } else {
+        h=(x|h);
+    }
+   }
+}
+
 int main() {
     // char name[] = "welcome";
     // char name1[] = "WELCOME";
@@ -198,7 +212,8 @@ int main() {
     // cout<<isPalindrome(s1);
     // cout<<isPalindrome1(s1);
     char s[]="finding";
-    DuplicateHash(s);
+    // DuplicateHash(s);
+    DuplicateBitwise(s);
 
     return 0;
 }
