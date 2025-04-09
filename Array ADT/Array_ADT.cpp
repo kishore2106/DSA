@@ -62,7 +62,7 @@ void Swap(int *i, int *j) {
     *j = temp; 
 }
 
-// Linear Search
+// Linear Search or Set Membership Operation
 int LinearSearch(struct Array *arr, int key){
     int i;
     for(i=0; i<arr->length; i++){
@@ -132,7 +132,7 @@ float Average(struct Array arr) {
     return (float)Sum(arr)/arr.length;
 }
 
-// Binary Search using Loop
+// Binary Search using Loop / Set Membership Operation
 int BinarySearch(struct Array arr, int key){
     int l, mid, h;
     l = 0;
@@ -313,6 +313,33 @@ struct Array* Union(struct Array *arr1, struct Array *arr2) {
     return arr3;
 }
 
+// Union of unsorted Array
+struct Array* UnSortUnion(struct Array *arr1, struct Array *arr2) {
+    int i,j,k;
+    i=j=k=0;
+    struct Array *arr3 = (struct Array*)malloc(sizeof(struct Array));
+
+    arr3->size=arr1->size+arr2->size;
+    while(i<arr1->length){
+        arr3->A[k++]=arr1->A[i++];
+    }
+    arr3->length=arr1->length;
+
+    bool count = false;
+    for(int j=0; j<arr2->length;j++){
+        count = false;
+        for(int i=0;i<arr1->length;i++){
+            if(arr2->A[j] == arr1->A[i]){
+                count = true;
+            }
+        }
+        if(count == false) {
+            arr3->A[arr3->length++] = arr2->A[j];
+        }
+    }
+    return arr3;
+}
+
 // Intersection of Sorted Array 
 struct Array* Intersection(struct Array *arr1, struct Array *arr2) {
     int i,j,k;
@@ -383,12 +410,13 @@ int main(){
     // cout<<isSorted(arr)<<endl;
     // Rearrange(&arr);
 
-    struct Array arr1={{2,5,10,15,25},10,5};
-    struct Array arr2={{3,5,7,15,18},10,5};
+    struct Array arr1={{2,10,9,15,25},10,5};
+    struct Array arr2={{10,5,7,15,18},10,5};
     // struct Array *arr3 = Merge(&arr1, &arr2);
     // struct Array *arr3 = Union(&arr1, &arr2);
     // struct Array *arr3 = Intersection(&arr1, &arr2);
-    struct Array *arr3 = Difference(&arr1, &arr2);
+    // struct Array *arr3 = Difference(&arr1, &arr2);
+    struct Array *arr3 = UnSortUnion(&arr1, &arr2);
 
 
 
