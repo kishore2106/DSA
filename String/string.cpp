@@ -155,6 +155,19 @@ bool isPalindrome1(char *s){
     return true;
 }
 
+// Duplicate in a string using Hash table
+void DuplicateHash(char *s){
+    int i, h[26]={0,0};
+    for(i=0; s[i]!='\0'; i++){
+        h[s[i]-97] += 1;
+    }
+    for(i=0; i<26; i++){
+        if(h[i]>1){
+            cout<<(char)(i+97)<<endl;
+        }
+    }
+}
+
 int main() {
     // char name[] = "welcome";
     // char name1[] = "WELCOME";
@@ -181,9 +194,11 @@ int main() {
     // char s1[] = "Painter";
     // char s2[] = "Painting";
     // compareStrings(s1, s2);
-    char s1[]="madam";
+    // char s1[]="madam";
     // cout<<isPalindrome(s1);
-    cout<<isPalindrome1(s1);
+    // cout<<isPalindrome1(s1);
+    char s[]="finding";
+    DuplicateHash(s);
 
     return 0;
 }
