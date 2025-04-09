@@ -78,12 +78,41 @@ int validateString(char *s){
     return 1;
 }
 
+// Reversing a string using new array
+char* reverseString(char *s){
+    int i,j;
+    static char s1[100];
+    for(i=0; s[i]!='\0'; i++){}
+    i=i-1;
+    for(j=0; i>=0; i--,j++){
+        s1[j]=s[i];
+    }
+    s1[j]='\0';
+    return s1;
+}
+
+// Reversing a string using 2 pointers
+void reverseString1(char *s){
+    int i, j;
+    char t;
+    
+    for(j = 0; s[j] != '\0'; j++) {}  
+    j = j - 1;  
+    
+    for(i = 0; i < j; i++, j--){
+        t = s[i];
+        s[i] = s[j];
+        s[j] = t;
+    }
+}
+
 int main() {
     char name[] = "welcome";
     char name1[] = "WELCOME";
     char name2[] = "WeLcOmE";
     char vowelCons[] = "How are you";
     char name3[] = "kishore@123";
+    char *s1;
     // cout<<length(name);
     // toLower(name1);
     // toUpper(name);
@@ -92,11 +121,14 @@ int main() {
     // countVowelCons(vowelCons);
     // cout<<countWords(vowelCons);
 
-    if(validateString(name3)){
-        cout<<"Valid String"<<endl;
-    } else {
-        cout<<"Invalid String"<<endl;
-    }
+    // if(validateString(name3)){
+    //     cout<<"Valid String"<<endl;
+    // } else {
+    //     cout<<"Invalid String"<<endl;
+    // }
+    // reverseString(name);
+    reverseString1(name);
+    cout<<name;
 
     return 0;
 }
