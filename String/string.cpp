@@ -56,6 +56,17 @@ void countVowelCons(char *s){
     cout<<"Number of vowels: "<<vcount<<"\n Number of consonants: "<<ccount;
 }
 
+// counting number of words 
+int countWords(char *s){
+    int i, word=1;
+    for(i=0; s[i]!='\0'; i++){
+        if(s[i]==' ' && s[i]!=s[i-1]){
+            word++;
+        }
+    }
+    return word;
+}
+
 int main() {
     char name[] = "welcome";
     char name1[] = "WELCOME";
@@ -66,7 +77,8 @@ int main() {
     // toUpper(name);
     // toggleCase(name2);
     // cout<<name2;
-    countVowelCons(vowelCons);
+    // countVowelCons(vowelCons);
+    cout<<countWords(vowelCons);
 
     return 0;
 }
