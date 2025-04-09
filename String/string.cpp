@@ -67,18 +67,36 @@ int countWords(char *s){
     return word;
 }
 
+// validate string
+int validateString(char *s){
+    int i;
+    for(i=0; s[i]!='\0'; i++){
+        if(!(s[i]>=65 && s[i]<=90) && !(s[i]>=97 && s[i]<=122) && !(s[i]>=48 && s[i]<=57)) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int main() {
     char name[] = "welcome";
     char name1[] = "WELCOME";
     char name2[] = "WeLcOmE";
-    char vowelCons[] = "How are you"; 
+    char vowelCons[] = "How are you";
+    char name3[] = "kishore@123";
     // cout<<length(name);
     // toLower(name1);
     // toUpper(name);
     // toggleCase(name2);
     // cout<<name2;
     // countVowelCons(vowelCons);
-    cout<<countWords(vowelCons);
+    // cout<<countWords(vowelCons);
+
+    if(validateString(name3)){
+        cout<<"Valid String"<<endl;
+    } else {
+        cout<<"Invalid String"<<endl;
+    }
 
     return 0;
 }
