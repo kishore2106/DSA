@@ -451,8 +451,37 @@ void missingEleNat1(struct Array *arr){
     int diff=l-0;
     for(int i=0; i<arr->length; i++){
         if(arr->A[i]-i != diff){
-            cout<<i+diff<<" is a Duplicate element"<<endl;
+            cout<<i+diff<<" is a missing element"<<endl;
             break;
+        }
+    }
+}
+
+// finding multiple missing elements
+void multiMissingEle(struct Array *arr){
+    int l=arr->A[0];
+    int diff=l-0;
+    for(int i=0; i<arr->length; i++){
+        if(arr->A[i]-i != diff){
+            while(diff<arr->A[i]-i){
+                cout<<i+diff<<" is a missing element"<<endl;
+                diff++;
+            }
+        }
+    }
+}
+
+// finding missing elements using hash table n natural numbers
+void multiMissingEleHash(struct Array *arr){
+    int h = Max(*arr);
+    int *H = new int[h];
+    for(int i=0; i<h; i++) H[i]=0;
+    for(int i=0; i<arr->length; i++){
+        H[arr->A[i]]+=1;
+    }
+    for(int i=1; i<h; i++){
+        if(H[i]==0){
+            cout<<i<<" is a missing element"<<endl;
         }
     }
 }
@@ -487,9 +516,9 @@ int main(){
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
     // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
-    struct Array arr1={{4,5,7,8,9,10},10,6};
+    struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
     // cout<<missingEleNat(&arr1);
-    missingEleNat1(&arr1);
+    multiMissingEleHash(&arr1);
 
 
 
