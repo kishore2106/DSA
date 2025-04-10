@@ -430,6 +430,174 @@ struct Array* UnSortDiff(struct Array *arr1, struct Array *arr2){
     return arr3;
 }
 
+// finding missing elements for n natural numbers starting from 1-n using formula
+int missingEleNat(struct Array *arr){
+   int n = Max(*arr);
+   
+   int sum = 0;
+   int s = (n*(n+1))/2;
+   for(int i=0; i<arr->length; i++){
+    sum += arr->A[i];
+   }
+   s = s-sum;
+
+   return s;
+}
+
+// finding missing elements for n natural numbers starting from m-n using indices
+void missingEleNat1(struct Array *arr){
+    int l=arr->A[0];
+    int h=Max(*arr);
+    int diff=l-0;
+    for(int i=0; i<arr->length; i++){
+        if(arr->A[i]-i != diff){
+            cout<<i+diff<<" is a missing element"<<endl;
+            break;
+        }
+    }
+}
+
+// finding multiple missing elements
+void multiMissingEle(struct Array *arr){
+    int l=arr->A[0];
+    int diff=l-0;
+    for(int i=0; i<arr->length; i++){
+        if(arr->A[i]-i != diff){
+            while(diff<arr->A[i]-i){
+                cout<<i+diff<<" is a missing element"<<endl;
+                diff++;
+            }
+        }
+    }
+}
+
+// finding missing elements using hash table n natural numbers
+void multiMissingEleHash(struct Array *arr){
+    int h = Max(*arr)+1;
+    int *H = new int[h];
+    for(int i=0; i<h; i++) H[i]=0;
+    for(int i=0; i<arr->length; i++){
+        H[arr->A[i]]+=1;
+    }
+    for(int i=1; i<h; i++){
+        if(H[i]==0){
+            cout<<i<<" is a missing element"<<endl;
+        }
+    }
+}
+
+// finding duplicates in sorted array
+void duplicatesSort(struct Array *arr){
+    int lastDup=0;
+    for(int i=0; i<arr->length-1; i++){
+        if(arr->A[i]==arr->A[i+1] && arr->A[i]!=lastDup ){
+            cout<<arr->A[i]<<" ";
+            lastDup=arr->A[i];
+        }
+    }
+}
+
+// finding, counting number of duplicates in sorted array 
+void duplicatesCountSort(struct Array *arr){
+    int i,j;
+    for(i=0; i<arr->length-1; i++){
+        if(arr->A[i]==arr->A[i+1]){
+            j=i+1;
+            while(arr->A[j]==arr->A[i]){
+                j++;
+            }
+            cout<<arr->A[i]<<" is appearing "<<j-i<<" times"<<endl;
+            i=j-1;
+        }
+    }
+}
+
+// finding duplicates elements in Array using hash table
+void duplicatesHash(struct Array *arr){
+    int h=Max(*arr);
+    int *H = new int[h];
+    for(int i=1;i<=h;i++) H[i]=0;
+    for(int i=0; i<arr->length; i++){
+        H[arr->A[i]]+=1;
+    }
+
+    for(int i=1; i<=h; i++){
+        if(H[i]>1){
+            cout<<i<<" is appearing "<<H[i]<<" times"<<endl;
+        }
+    }
+}
+
+// finding, counting number of duplicates in un-sorted array
+void duplicatesUnSort(struct Array *arr){
+    int i,j,count;
+    for(i=0;i<arr->length-1;i++){
+        count=0;
+        for(j=i+1;j<arr->length;j++){
+            if(arr->A[i]==arr->A[j] && arr->A[i]!=-1){
+                arr->A[j]=-1;
+                count++;
+            }
+        }
+        if(count>0){
+            cout<<arr->A[i]<<" is appearing "<<count<<" times"<<endl;
+        }
+    }
+}
+
+// find a pair with sum k (two sum prob)
+void twoSum(struct Array *arr, int k){
+    int i,j;
+    for(i=0; i<arr->length-1;i++){
+        for(j=i+1; j<arr->length;j++){
+            if(arr->A[i]+arr->A[j]==k){
+                cout<<arr->A[i]<<" + "<<arr->A[j]<<" = "<<k<<endl;
+            }
+        }
+    }
+}
+
+// find a pair with sum k (two sum prob) using Hash table
+void twoSumHash(struct Array *arr, int k){
+    int h=Max(*arr);
+    int H[h]={0};
+    for(int i=0;i<arr->length;i++){
+        if(H[arr->A[i]-k]!=0){
+            cout<<k-arr->A[i]<<" + "<<arr->A[i]<<" = "<<k<<endl;
+        }
+    }
+}
+
+// find a pair with sum k for sorted array
+void twoSumSort(struct Array *arr,int k){
+    int i=0, j=arr->length-1;
+    while(i<j){
+        if(arr->A[i]+arr->A[j]==k){
+            cout<<arr->A[i]<<" + "<<arr->A[j]<<" = "<<k<<endl;
+            i++;j--;
+        }
+        else if(arr->A[i]+arr->A[j]<k){
+            i++;
+        } else{
+            j--;
+        }
+    }
+}
+
+// find max and min in a single scan
+void MinMax(struct Array *arr){
+    int i,min,max;
+    min=max=arr->A[0];
+    for(i=1; i<arr->length; i++){
+        if(arr->A[i]<min){
+            min=arr->A[i];
+        } else if(arr->A[i]>max){
+            max=arr->A[i];
+        }
+    }
+    cout<<"Min :"<<min<<"\nMax: "<<max<<endl;
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -453,17 +621,27 @@ int main(){
     // cout<<isSorted(arr)<<endl;
     // Rearrange(&arr);
 
-    struct Array arr1={{2,10,9,15,25},10,5};
-    struct Array arr2={{10,5,7,15,18},10,5};
+    // struct Array arr1={{2,10,9,15,25},10,5};
+    // struct Array arr2={{10,5,7,15,18},10,5};
     // struct Array *arr3 = Merge(&arr1, &arr2);
     // struct Array *arr3 = Union(&arr1, &arr2);
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
-    struct Array *arr3 = UnSortDiff(&arr1, &arr2);
+    // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
+    struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
+    // cout<<missingEleNat(&arr1);
+    // struct Array arr = {{3,6,8,8,7,12,15,15,15},10,10};
+    // multiMissingEleHash(&arr);
+    // duplicatesSort(&arr);
+    // duplicatesCountSort(&arr);
+    // duplicatesUnSort(&arr);
+    // struct Array arr = {{6,3,8,10,16,7,5,2,0,14},10,10};
+    // twoSum(&arr, 8);
+    // twoSumHash(&arr, 8);
+    // twoSumSort(&arr1, 8);
+    MinMax(&arr1);
 
-
-
-    display(*arr3);
+    // display(*arr3);
 
     return 0;
 }
