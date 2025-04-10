@@ -473,7 +473,7 @@ void multiMissingEle(struct Array *arr){
 
 // finding missing elements using hash table n natural numbers
 void multiMissingEleHash(struct Array *arr){
-    int h = Max(*arr);
+    int h = Max(*arr)+1;
     int *H = new int[h];
     for(int i=0; i<h; i++) H[i]=0;
     for(int i=0; i<arr->length; i++){
@@ -508,6 +508,22 @@ void duplicatesCountSort(struct Array *arr){
             }
             cout<<arr->A[i]<<" is appearing "<<j-i<<" times"<<endl;
             i=j-1;
+        }
+    }
+}
+
+// finding duplicates elements in sorted Array using hash table
+void duplicatesSortHash(struct Array *arr){
+    int h=Max(*arr)+1;
+    int *H = new int[h];
+    for(int i=0;i<h;i++) H[i]=0;
+    for(int i=0; i<arr->length; i++){
+        H[arr->A[i]]+=1;
+    }
+
+    for(int i=0; i<h; i++){
+        if(H[i]>1){
+            cout<<i<<" is appearing "<<H[i]<<" times"<<endl;
         }
     }
 }
@@ -547,7 +563,8 @@ int main(){
     struct Array arr = {{3,6,8,8,10,12,15,15,15},10,10};
     // multiMissingEleHash(&arr);
     // duplicatesSort(&arr);
-    duplicatesCountSort(&arr);
+    // duplicatesCountSort(&arr);
+    duplicatesSortHash(&arr);
 
 
 
