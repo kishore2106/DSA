@@ -568,6 +568,22 @@ void twoSumHash(struct Array *arr, int k){
     }
 }
 
+// find a pair with sum k for sorted array
+void twoSumSort(struct Array *arr,int k){
+    int i=0, j=arr->length-1;
+    while(i<j){
+        if(arr->A[i]+arr->A[j]==k){
+            cout<<arr->A[i]<<" + "<<arr->A[j]<<" = "<<k<<endl;
+            i++;j--;
+        }
+        else if(arr->A[i]+arr->A[j]<k){
+            i++;
+        } else{
+            j--;
+        }
+    }
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -598,16 +614,17 @@ int main(){
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
     // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
-    // struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
+    struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
     // cout<<missingEleNat(&arr1);
     // struct Array arr = {{3,6,8,8,7,12,15,15,15},10,10};
     // multiMissingEleHash(&arr);
     // duplicatesSort(&arr);
     // duplicatesCountSort(&arr);
     // duplicatesUnSort(&arr);
-    struct Array arr = {{6,3,8,10,16,7,5,2,0,14},10,10};
+    // struct Array arr = {{6,3,8,10,16,7,5,2,0,14},10,10};
     // twoSum(&arr, 8);
-    twoSumHash(&arr, 8);
+    // twoSumHash(&arr, 8);
+    twoSumSort(&arr1, 8);
 
     // display(*arr3);
 
