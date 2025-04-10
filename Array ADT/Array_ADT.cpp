@@ -528,6 +528,23 @@ void duplicatesSortHash(struct Array *arr){
     }
 }
 
+// finding, counting number of duplicates in un-sorted array
+void duplicatesUnSort(struct Array *arr){
+    int i,j,count;
+    for(i=0;i<arr->length-1;i++){
+        count=0;
+        for(j=i+1;j<arr->length;j++){
+            if(arr->A[i]==arr->A[j] && arr->A[i]!=-1){
+                arr->A[j]=-1;
+                count++;
+            }
+        }
+        if(count>0){
+            cout<<arr->A[i]<<" is appearing "<<count<<" times"<<endl;
+        }
+    }
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -564,7 +581,7 @@ int main(){
     // multiMissingEleHash(&arr);
     // duplicatesSort(&arr);
     // duplicatesCountSort(&arr);
-    duplicatesSortHash(&arr);
+    duplicatesUnSort(&arr);
 
 
 
