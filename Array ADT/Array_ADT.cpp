@@ -486,6 +486,32 @@ void multiMissingEleHash(struct Array *arr){
     }
 }
 
+// finding duplicates in sorted array
+void duplicatesSort(struct Array *arr){
+    int lastDup=0;
+    for(int i=0; i<arr->length-1; i++){
+        if(arr->A[i]==arr->A[i+1] && arr->A[i]!=lastDup ){
+            cout<<arr->A[i]<<" ";
+            lastDup=arr->A[i];
+        }
+    }
+}
+
+// finding, counting number of duplicates in sorted array 
+void duplicatesCountSort(struct Array *arr){
+    int i,j;
+    for(i=0; i<arr->length-1; i++){
+        if(arr->A[i]==arr->A[i+1]){
+            j=i+1;
+            while(arr->A[j]==arr->A[i]){
+                j++;
+            }
+            cout<<arr->A[i]<<" is appearing "<<j-i<<" times"<<endl;
+            i=j-1;
+        }
+    }
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -516,9 +542,12 @@ int main(){
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
     // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
-    struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
+    // struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
     // cout<<missingEleNat(&arr1);
-    multiMissingEleHash(&arr1);
+    struct Array arr = {{3,6,8,8,10,12,15,15,15},10,10};
+    // multiMissingEleHash(&arr);
+    // duplicatesSort(&arr);
+    duplicatesCountSort(&arr);
 
 
 
