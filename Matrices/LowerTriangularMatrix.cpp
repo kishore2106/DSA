@@ -10,13 +10,19 @@ struct Matrix{
 
 void Set(struct Matrix *m, int i, int j, int x){
     if(i>=j){
+        // row major
         m->A[(i*(i-1)/2)+j-1]=x;
+        // column major
+        // m->A[m->n*(j-1)-(j-2)*(j-1)/2+i-j]=x;
     }
 }
 
 int Get(struct Matrix m, int i, int j){
     if(i>=j){
+        // row major
         return m.A[i*(i-1)/2+j-1];
+        // column major
+        // return m.A[m.n*(j-1)-(j-2)*(j-1)/2+i-j];
     } else {
         return 0;
     }   
