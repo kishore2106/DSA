@@ -512,16 +512,16 @@ void duplicatesCountSort(struct Array *arr){
     }
 }
 
-// finding duplicates elements in sorted Array using hash table
-void duplicatesSortHash(struct Array *arr){
-    int h=Max(*arr)+1;
+// finding duplicates elements in Array using hash table
+void duplicatesHash(struct Array *arr){
+    int h=Max(*arr);
     int *H = new int[h];
-    for(int i=0;i<h;i++) H[i]=0;
+    for(int i=1;i<=h;i++) H[i]=0;
     for(int i=0; i<arr->length; i++){
         H[arr->A[i]]+=1;
     }
 
-    for(int i=0; i<h; i++){
+    for(int i=1; i<=h; i++){
         if(H[i]>1){
             cout<<i<<" is appearing "<<H[i]<<" times"<<endl;
         }
@@ -541,6 +541,29 @@ void duplicatesUnSort(struct Array *arr){
         }
         if(count>0){
             cout<<arr->A[i]<<" is appearing "<<count<<" times"<<endl;
+        }
+    }
+}
+
+// find a pair with sum k (two sum prob)
+void twoSum(struct Array *arr, int k){
+    int i,j;
+    for(i=0; i<arr->length-1;i++){
+        for(j=i+1; j<arr->length;j++){
+            if(arr->A[i]+arr->A[j]==k){
+                cout<<arr->A[i]<<" + "<<arr->A[j]<<" = "<<k<<endl;
+            }
+        }
+    }
+}
+
+// find a pair with sum k (two sum prob) using Hash table
+void twoSumHash(struct Array *arr, int k){
+    int h=Max(*arr);
+    int H[h]={0};
+    for(int i=0;i<arr->length;i++){
+        if(H[arr->A[i]-k]!=0){
+            cout<<k-arr->A[i]<<" + "<<arr->A[i]<<" = "<<k<<endl;
         }
     }
 }
@@ -577,13 +600,14 @@ int main(){
     // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
     // struct Array arr1={{1,2,3,4,5,7,8,10,12,13},10,10};
     // cout<<missingEleNat(&arr1);
-    struct Array arr = {{3,6,8,8,10,12,15,15,15},10,10};
+    // struct Array arr = {{3,6,8,8,7,12,15,15,15},10,10};
     // multiMissingEleHash(&arr);
     // duplicatesSort(&arr);
     // duplicatesCountSort(&arr);
-    duplicatesUnSort(&arr);
-
-
+    // duplicatesUnSort(&arr);
+    struct Array arr = {{6,3,8,10,16,7,5,2,0,14},10,10};
+    // twoSum(&arr, 8);
+    twoSumHash(&arr, 8);
 
     // display(*arr3);
 
