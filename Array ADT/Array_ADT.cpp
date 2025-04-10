@@ -430,6 +430,33 @@ struct Array* UnSortDiff(struct Array *arr1, struct Array *arr2){
     return arr3;
 }
 
+// finding missing elements for n natural numbers starting from 1-n using formula
+int missingEleNat(struct Array *arr){
+   int n = Max(*arr);
+   
+   int sum = 0;
+   int s = (n*(n+1))/2;
+   for(int i=0; i<arr->length; i++){
+    sum += arr->A[i];
+   }
+   s = s-sum;
+
+   return s;
+}
+
+// finding missing elements for n natural numbers starting from m-n using indices
+void missingEleNat1(struct Array *arr){
+    int l=arr->A[0];
+    int h=Max(*arr);
+    int diff=l-0;
+    for(int i=0; i<arr->length; i++){
+        if(arr->A[i]-i != diff){
+            cout<<i+diff<<" is a Duplicate element"<<endl;
+            break;
+        }
+    }
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -453,17 +480,20 @@ int main(){
     // cout<<isSorted(arr)<<endl;
     // Rearrange(&arr);
 
-    struct Array arr1={{2,10,9,15,25},10,5};
-    struct Array arr2={{10,5,7,15,18},10,5};
+    // struct Array arr1={{2,10,9,15,25},10,5};
+    // struct Array arr2={{10,5,7,15,18},10,5};
     // struct Array *arr3 = Merge(&arr1, &arr2);
     // struct Array *arr3 = Union(&arr1, &arr2);
     // struct Array *arr3 = Intersection(&arr1, &arr2);
     // struct Array *arr3 = Difference(&arr1, &arr2);
-    struct Array *arr3 = UnSortDiff(&arr1, &arr2);
+    // struct Array *arr3 = UnSortDiff(&arr1, &arr2);
+    struct Array arr1={{4,5,7,8,9,10},10,6};
+    // cout<<missingEleNat(&arr1);
+    missingEleNat1(&arr1);
 
 
 
-    display(*arr3);
+    // display(*arr3);
 
     return 0;
 }
