@@ -584,6 +584,20 @@ void twoSumSort(struct Array *arr,int k){
     }
 }
 
+// find max and min in a single scan
+void MinMax(struct Array *arr){
+    int i,min,max;
+    min=max=arr->A[0];
+    for(i=1; i<arr->length; i++){
+        if(arr->A[i]<min){
+            min=arr->A[i];
+        } else if(arr->A[i]>max){
+            max=arr->A[i];
+        }
+    }
+    cout<<"Min :"<<min<<"\nMax: "<<max<<endl;
+}
+
 int main(){
     // struct Array arr={{-2,-3,4,5,-6,10,-23,-15},20,8};
     // int i, n;
@@ -624,7 +638,8 @@ int main(){
     // struct Array arr = {{6,3,8,10,16,7,5,2,0,14},10,10};
     // twoSum(&arr, 8);
     // twoSumHash(&arr, 8);
-    twoSumSort(&arr1, 8);
+    // twoSumSort(&arr1, 8);
+    MinMax(&arr1);
 
     // display(*arr3);
 
