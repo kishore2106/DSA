@@ -160,6 +160,22 @@ struct Node* RSearch(struct Node *p, int key){
     return RSearch(p->next, key);
 }
 
+// Linear Search in LL and Transpostion
+struct Node* TSearch(struct Node *p, int key){
+    struct Node* q;
+    while(p!=NULL){
+        if(p->data == key){
+            q->next=p->next;
+            p->next=first;
+            first=p;
+            return p;
+        }
+        q=p;
+        p=p->next;
+    }
+    return NULL;
+}
+
 int main(){
     int A[] = {28,5,7,30,15,17};
     create(A, 6);
@@ -176,12 +192,15 @@ int main(){
     // cout<<RMin(first);
 
     // struct Node* temp = Search(first, 1);
-    struct Node* temp = RSearch(first, 30);
+    // struct Node* temp = RSearch(first, 30);
+    Display(first);
+    struct Node* temp = TSearch(first, 30);
     if(temp!=NULL){
         cout<<"Element found"<<endl;
     } else {
         cout<<"Element not found"<<endl;
     }
+    Display(first);
 
     return 0;
 }
