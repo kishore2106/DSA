@@ -84,6 +84,15 @@ int Sum(struct Node *p){
     return sum;
 }
 
+// Sum of elements of LL using recursion
+int RSum(struct Node *p){
+    if(p!=NULL){
+        return RSum(p->next)+p->data;
+    } else {
+        return 0;
+    }
+}
+
 int main(){
     int A[] = {3,5,7,10,15,17};
     create(A, 6);
@@ -91,6 +100,7 @@ int main(){
     // RevDisplay(first);
     // cout<<Count(first);
     // cout<<RCount(first);
-    cout<<Sum(first);
+    // cout<<Sum(first);
+    cout<<RSum(first);
     return 0;
 }
