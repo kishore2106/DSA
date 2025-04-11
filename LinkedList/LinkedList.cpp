@@ -93,14 +93,28 @@ int RSum(struct Node *p){
     }
 }
 
+// Max element of LL
+int Max(struct Node *p){
+    int max = INT_MIN;
+    while(p!=NULL){
+        if(p->data > max){
+            max = p->data;
+        }
+        p=p->next;
+    }
+    return max;
+}
+
 int main(){
-    int A[] = {3,5,7,10,15,17};
+    int A[] = {3,5,7,30,15,17};
     create(A, 6);
 
     // RevDisplay(first);
     // cout<<Count(first);
     // cout<<RCount(first);
     // cout<<Sum(first);
-    cout<<RSum(first);
+    // cout<<RSum(first);
+    cout<<Max(first);
+
     return 0;
 }
