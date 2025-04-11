@@ -129,8 +129,20 @@ int Min(struct Node *p){
     return min;
 }
 
+// Min element of LL using recursion
+int RMin(struct Node *p){
+    int x=0;
+    if(p==0) return INT_MAX;
+    x=RMin(p->next);
+    if(p->data<x){
+        return p->data;
+    } else {
+        return x;
+    }
+}
+
 int main(){
-    int A[] = {3,5,7,30,15,17};
+    int A[] = {28,5,7,30,15,17};
     create(A, 6);
 
     // RevDisplay(first);
@@ -140,7 +152,8 @@ int main(){
     // cout<<RSum(first);
     // cout<<Max(first);
     // cout<<RMax(first);
-    cout<<Min(first);
+    // cout<<Min(first);
+    cout<<RMin(first);
 
     return 0;
 }
