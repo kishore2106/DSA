@@ -105,6 +105,18 @@ int Max(struct Node *p){
     return max;
 }
 
+// Max element of LL using recursion
+int RMax(struct Node *p){
+    int x=0;
+    if(p==0) return INT_MIN;
+    x=RMax(p->next);
+    if(x>p->data){
+        return x;
+    } else {
+        return p->data;
+    }
+}
+
 int main(){
     int A[] = {3,5,7,30,15,17};
     create(A, 6);
@@ -114,7 +126,8 @@ int main(){
     // cout<<RCount(first);
     // cout<<Sum(first);
     // cout<<RSum(first);
-    cout<<Max(first);
+    // cout<<Max(first);
+    cout<<RMax(first);
 
     return 0;
 }
