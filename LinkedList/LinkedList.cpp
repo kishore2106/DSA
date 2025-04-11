@@ -74,11 +74,23 @@ int RCount(struct Node *p){
     }
 }
 
+// Sum of elements of LL
+int Sum(struct Node *p){
+    int sum = 0;
+    while(p!=NULL){
+        sum += p->data;
+        p=p->next;
+    }
+    return sum;
+}
+
 int main(){
     int A[] = {3,5,7,10,15,17};
     create(A, 6);
 
     // RevDisplay(first);
-    cout<<RCount(first);
+    // cout<<Count(first);
+    // cout<<RCount(first);
+    cout<<Sum(first);
     return 0;
 }
