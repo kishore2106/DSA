@@ -8,6 +8,7 @@ struct Node{
     struct Node *next;
 }*first;
 
+// Creating LL using Array
 void create(int A[], int n){
     int i;
     struct Node *t, *last;
@@ -25,6 +26,7 @@ void create(int A[], int n){
     }
 }
 
+// printing elements of LL
 void Display(struct Node *p){
     while(p != NULL){
         cout<<p->data<<"->";
@@ -33,6 +35,7 @@ void Display(struct Node *p){
     cout<<"NULL"<<endl;
 }
 
+// printing elements of LL using recursion
 void RDisplay(struct Node *p){
     if(p != NULL){
         cout<<p->data<<"->";
@@ -43,6 +46,7 @@ void RDisplay(struct Node *p){
     
 }
 
+// printing reverse of LL using recursion
 void RevDisplay(struct Node *p){
     if( p != NULL ){
         RevDisplay(p->next);
@@ -51,10 +55,21 @@ void RevDisplay(struct Node *p){
     
 }
 
+// Counting elements of LL
+int Count(struct Node *p){
+    int count = 0;
+    while(p!=0){
+        count++;
+        p=p->next;
+    }
+    return count;
+}
+
 int main(){
     int A[] = {3,5,7,10,15};
     create(A, 5);
 
-    RevDisplay(first);
+    // RevDisplay(first);
+    cout<<Count(first);
     return 0;
 }
