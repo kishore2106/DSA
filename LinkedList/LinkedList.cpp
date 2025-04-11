@@ -176,9 +176,30 @@ struct Node* HSearch(struct Node *p, int key){
     return NULL;
 }
 
+// Insert Node in LL
+void Insert(struct Node *p, int index, int x){
+    struct Node *t;
+    if(index < 0 || index > Count(p)){
+        return;
+    }
+    t=new Node;
+    t->data=x;
+
+    if(index == 0){
+        t->next=first;
+        first=t;
+    } else {
+        for(int i=0; i<index-1; i++){
+            p=p->next;
+        }
+        t->next=p->next;
+        p->next=t;
+    }
+} 
+
 int main(){
-    int A[] = {28,5,7,30,15,17};
-    create(A, 6);
+    int A[] = {3,5,7};
+    create(A, 3);
 
     // RevDisplay(first);
     // cout<<Count(first);
@@ -193,14 +214,18 @@ int main(){
 
     // struct Node* temp = Search(first, 1);
     // struct Node* temp = RSearch(first, 30);
+    // Display(first);
+    // struct Node* temp = HSearch(first, 30);
+    // if(temp!=NULL){
+    //     cout<<"Element found"<<endl;
+    // } else {
+    //     cout<<"Element not found"<<endl;
+    // }
     Display(first);
-    struct Node* temp = HSearch(first, 30);
-    if(temp!=NULL){
-        cout<<"Element found"<<endl;
-    } else {
-        cout<<"Element not found"<<endl;
-    }
+    Insert(first, 0, 10);
+    Insert(first, 3, 20);
     Display(first);
+
 
     return 0;
 }
