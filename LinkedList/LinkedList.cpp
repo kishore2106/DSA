@@ -160,8 +160,8 @@ struct Node* RSearch(struct Node *p, int key){
     return RSearch(p->next, key);
 }
 
-// Linear Search in LL and Transpostion
-struct Node* TSearch(struct Node *p, int key){
+// Linear Search in LL and Move to hear
+struct Node* HSearch(struct Node *p, int key){
     struct Node* q;
     while(p!=NULL){
         if(p->data == key){
@@ -194,7 +194,7 @@ int main(){
     // struct Node* temp = Search(first, 1);
     // struct Node* temp = RSearch(first, 30);
     Display(first);
-    struct Node* temp = TSearch(first, 30);
+    struct Node* temp = HSearch(first, 30);
     if(temp!=NULL){
         cout<<"Element found"<<endl;
     } else {
