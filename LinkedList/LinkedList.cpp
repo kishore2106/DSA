@@ -152,6 +152,14 @@ struct Node* Search(struct Node *p, int key){
     return NULL;
 }
 
+// Linear Search in LL using recursion
+struct Node* RSearch(struct Node *p, int key){
+    if(p==0) return NULL;
+    if(key==p->data)
+        return p;
+    return RSearch(p->next, key);
+}
+
 int main(){
     int A[] = {28,5,7,30,15,17};
     create(A, 6);
@@ -167,9 +175,12 @@ int main(){
     // cout<<RMin(first);
     // cout<<RMin(first);
 
-    struct Node* temp = Search(first, 17);
+    // struct Node* temp = Search(first, 1);
+    struct Node* temp = RSearch(first, 30);
     if(temp!=NULL){
         cout<<"Element found"<<endl;
+    } else {
+        cout<<"Element not found"<<endl;
     }
 
     return 0;
