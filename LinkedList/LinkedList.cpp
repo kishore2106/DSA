@@ -160,7 +160,7 @@ struct Node* RSearch(struct Node *p, int key){
     return RSearch(p->next, key);
 }
 
-// Linear Search in LL and Move to hear
+// Linear Search in LL and Move to head
 struct Node* HSearch(struct Node *p, int key){
     struct Node* q;
     while(p!=NULL){
