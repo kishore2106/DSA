@@ -141,6 +141,17 @@ int RMin(struct Node *p){
     }
 }
 
+// Linear Search in LL
+struct Node* Search(struct Node *p, int key){
+    while(p!=NULL){
+        if(p->data == key){
+            return p;
+        }
+        p=p->next;
+    }
+    return NULL;
+}
+
 int main(){
     int A[] = {28,5,7,30,15,17};
     create(A, 6);
@@ -153,7 +164,13 @@ int main(){
     // cout<<Max(first);
     // cout<<RMax(first);
     // cout<<Min(first);
-    cout<<RMin(first);
+    // cout<<RMin(first);
+    // cout<<RMin(first);
+
+    struct Node* temp = Search(first, 17);
+    if(temp!=NULL){
+        cout<<"Element found"<<endl;
+    }
 
     return 0;
 }
