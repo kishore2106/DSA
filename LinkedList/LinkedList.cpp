@@ -117,6 +117,18 @@ int RMax(struct Node *p){
     }
 }
 
+// Min element of LL
+int Min(struct Node *p){
+    int min = INT_MAX;
+    while(p!=NULL){
+        if(p->data < min){
+            min = p->data;
+        }
+        p=p->next;
+    }
+    return min;
+}
+
 int main(){
     int A[] = {3,5,7,30,15,17};
     create(A, 6);
@@ -127,7 +139,8 @@ int main(){
     // cout<<Sum(first);
     // cout<<RSum(first);
     // cout<<Max(first);
-    cout<<RMax(first);
+    // cout<<RMax(first);
+    cout<<Min(first);
 
     return 0;
 }
