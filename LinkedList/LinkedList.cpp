@@ -65,11 +65,20 @@ int Count(struct Node *p){
     return count;
 }
 
+// Counting elements of LL using recursion
+int RCount(struct Node *p){
+    if(p!=NULL){
+        return 1 + RCount(p->next);
+    } else {
+        return 0;
+    }
+}
+
 int main(){
-    int A[] = {3,5,7,10,15};
-    create(A, 5);
+    int A[] = {3,5,7,10,15,17};
+    create(A, 6);
 
     // RevDisplay(first);
-    cout<<Count(first);
+    cout<<RCount(first);
     return 0;
 }
