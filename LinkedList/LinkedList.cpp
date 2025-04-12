@@ -340,10 +340,41 @@ void Concatenate(struct Node *p, struct Node *q){
     p->next=q;
 }
 
+// Merging 2 sorted LL
+void Merge(struct Node *p, struct Node *q){
+    struct Node *last=NULL;
+    if(p->data<q->data){
+        third=last=p;
+        p=p->next;
+        third->next=NULL;
+    } else {
+        third=last=q;
+        q=q->next;
+        third->next=NULL;
+    }
+
+    while(p && q){
+        if(p->data<q->data){
+            last->next=p;
+            last=p;
+            p=p->next;
+            last->next=NULL;
+        } else {
+            last->next=q;
+            last=q;
+            q=q->next;
+            last->next=NULL;
+        }
+    }
+
+    if(p) last->next=p;
+    else last->next=q;
+}
+
 int main(){
-    int A[] = {10,20,20,20,30,40,40,50};
-    int B[] = {2,4,6,8,10};
-    create(A, 8);
+    int A[] = {10,20,30,40,50};
+    int B[] = {5,15,25,35,45};
+    create(A, 5);
     create2(B, 5);
 
     // RevDisplay(first);
@@ -378,9 +409,12 @@ int main(){
     // ReverseArray(first);
     // ReverseSlide(first);
     // ReverseRec(NULL, first);
-    Concatenate(first,second);
+    // Concatenate(first,second);
     // Display(first);
     // Display(second);
+    Merge(first, second);
     Display(third);
+
+
     return 0;
 }
