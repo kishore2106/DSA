@@ -246,6 +246,19 @@ int Delete(struct Node *p, int index){
     }
 }
 
+// Check the given list is sorted or not
+int IsSorted(struct Node *p){
+    int x=INT_MIN;
+    while(p!=NULL){
+        if(p->data < x){
+            return 0;
+        }
+        x=p->data;
+        p=p->next;
+    }
+    return 1;
+}
+
 int main(){
     int A[] = {10,20,30,40,50};
     create(A, 5);
@@ -276,7 +289,8 @@ int main(){
     // InsertSorted(first,35);
     // InsertSorted(first,55);
     // InsertSorted(first,5);
-    cout<<Delete(first,6)<<endl;
+    // cout<<Delete(first,6)<<endl;
+    cout<<IsSorted(first);
 
     Display(first);
     return 0;
