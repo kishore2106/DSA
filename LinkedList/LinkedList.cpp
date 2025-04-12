@@ -259,9 +259,24 @@ int IsSorted(struct Node *p){
     return 1;
 }
 
+// Remove Duplicate node from a sorted LL
+void RemoveSortDup(struct Node *p){
+    struct Node *q = p->next;
+    while(q != NULL){
+        if(p->data != q->data){
+            p=q;
+            q=q->next;
+        } else {
+            p->next=q->next;
+            delete q;
+            q=p->next;
+        }
+    }
+}
+
 int main(){
-    int A[] = {10,20,30,40,50};
-    create(A, 5);
+    int A[] = {10,20,20,20,30,40,40,50};
+    create(A, 8);
 
     // RevDisplay(first);
     // cout<<Count(first);
@@ -290,8 +305,8 @@ int main(){
     // InsertSorted(first,55);
     // InsertSorted(first,5);
     // cout<<Delete(first,6)<<endl;
-    cout<<IsSorted(first);
-
+    // cout<<IsSorted(first);
+    RemoveSortDup(first);
     Display(first);
     return 0;
 }
