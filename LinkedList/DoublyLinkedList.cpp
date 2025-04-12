@@ -37,9 +37,19 @@ int Length(struct Node *p){
     return count;
 }
 
+// Display Doubly Linked List
+void Display(struct Node *p){
+    while(p!=NULL){
+        cout<<p->data<<" ";
+        p=p->next;
+    }
+    cout<<endl;
+}
+
 int main(){
     int a[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     create(a, 10);
-    cout<<Length(first);
+    cout<<Length(first)<<endl;
+    Display(first);
     return 0;
 }
