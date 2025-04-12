@@ -6,7 +6,7 @@ using namespace std;
 struct Node{
     int data;
     struct Node *next;
-}*first;
+}*first, *second, *third;
 
 // Creating LL using Array
 void create(int A[], int n){
@@ -16,6 +16,24 @@ void create(int A[], int n){
     first->data = A[0];
     first->next = NULL;
     last = first;
+
+    for(i=1; i<n; i++){
+        t = new Node;
+        t->data=A[i];
+        t->next=NULL;
+        last->next=t;
+        last=t;
+    }
+}
+
+// Create second LL
+void create2(int A[], int n){
+    int i;
+    struct Node *t, *last;
+    second = new Node;
+    second->data = A[0];
+    second->next = NULL;
+    last = second;
 
     for(i=1; i<n; i++){
         t = new Node;
@@ -313,9 +331,20 @@ void ReverseRec(struct Node *q, struct Node *p){
     }
 }
 
+// Concate 2 LL
+void Concatenate(struct Node *p, struct Node *q){
+    third=p;
+    while(p->next!=NULL){
+        p=p->next;
+    }
+    p->next=q;
+}
+
 int main(){
     int A[] = {10,20,20,20,30,40,40,50};
+    int B[] = {2,4,6,8,10};
     create(A, 8);
+    create2(B, 5);
 
     // RevDisplay(first);
     // cout<<Count(first);
@@ -337,7 +366,7 @@ int main(){
     // } else {
     //     cout<<"Element not found"<<endl;
     // }
-    Display(first);
+    // Display(first);
     // Insert(first, 0, 10);
     // Insert(first, 3, 20);
     // InsertSorted(first,35);
@@ -348,7 +377,10 @@ int main(){
     // RemoveSortDup(first);
     // ReverseArray(first);
     // ReverseSlide(first);
-    ReverseRec(NULL, first);
-    Display(first);
+    // ReverseRec(NULL, first);
+    Concatenate(first,second);
+    // Display(first);
+    // Display(second);
+    Display(third);
     return 0;
 }
