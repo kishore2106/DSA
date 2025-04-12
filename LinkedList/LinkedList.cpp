@@ -291,6 +291,18 @@ void ReverseArray(struct Node *p){
 
 }
 
+// Reversing a LL using sliding pointer technique
+void ReverseSlide(struct Node *p){
+    struct Node *q = NULL, *r = NULL;
+    while(p!=NULL){
+        r=q;
+        q=p;
+        p=p->next;
+        q->next=r;
+    }
+    first=q;
+}
+
 int main(){
     int A[] = {10,20,20,20,30,40,40,50};
     create(A, 8);
@@ -324,7 +336,8 @@ int main(){
     // cout<<Delete(first,6)<<endl;
     // cout<<IsSorted(first);
     // RemoveSortDup(first);
-    ReverseArray(first);
+    // ReverseArray(first);
+    ReverseSlide(first);
     Display(first);
     return 0;
 }
