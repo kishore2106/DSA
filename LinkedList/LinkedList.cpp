@@ -371,6 +371,22 @@ void Merge(struct Node *p, struct Node *q){
     else last->next=q;
 }
 
+// Check the LL is Loop or Linear
+int CheckLoop(struct Node *f){
+    struct Node *p,*q;
+    p=q=f;
+    do{
+        p=p->next;
+        q=q->next;
+        q=q?q->next:q;
+    } while(p && q && p!=q);
+    if(p==q){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 int main(){
     int A[] = {10,20,30,40,50};
     int B[] = {5,15,25,35,45};
@@ -412,8 +428,19 @@ int main(){
     // Concatenate(first,second);
     // Display(first);
     // Display(second);
-    Merge(first, second);
-    Display(third);
+    // Merge(first, second);
+
+    struct Node *t1, *t2;
+    t1 = first->next->next;
+    t2 = first->next->next->next->next;
+    t2->next=t1;
+
+    if(CheckLoop(first)){
+        cout<<"Loop found"<<endl;
+    } else {
+        cout<<"Linear LL"<<endl;
+    }
+    // Display(first);
 
 
     return 0;
