@@ -197,9 +197,32 @@ void Insert(struct Node *p, int index, int x){
     }
 } 
 
+// Insert Node in sorted LL
+void InsertSorted(struct Node *p, int x){
+    struct Node *t, *q=NULL;
+    t=new Node;
+    t->data=x;
+    t->next=NULL;
+    if(first==NULL){
+        first=t;
+    } else {
+        while(p && p->data < x){
+            q=p;
+            p=p->next;
+        }
+        if(p==first){
+            t->next=first;
+            first=t;
+        } else {
+            t->next=q->next;
+            q->next=t;
+        }
+    }   
+}
+
 int main(){
-    int A[] = {3,5,7};
-    create(A, 3);
+    int A[] = {10,20,30,40,50};
+    create(A, 5);
 
     // RevDisplay(first);
     // cout<<Count(first);
@@ -222,8 +245,11 @@ int main(){
     //     cout<<"Element not found"<<endl;
     // }
     Display(first);
-    Insert(first, 0, 10);
-    Insert(first, 3, 20);
+    // Insert(first, 0, 10);
+    // Insert(first, 3, 20);
+    InsertSorted(first,35);
+    InsertSorted(first,55);
+    InsertSorted(first,5);
     Display(first);
 
 
