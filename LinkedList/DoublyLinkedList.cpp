@@ -46,10 +46,35 @@ void Display(struct Node *p){
     cout<<endl;
 }
 
+// Inserting Node in a DLL
+void Insert(struct Node *p, int index, int x){
+    struct Node *t;
+    int i;
+    if(index<0 || index>Length(p)) return;
+    if(index==0){
+        t=new Node;
+        t->data=x;
+        t->next=first;
+        t->prev=NULL;
+        first->prev=t;
+        first=t;
+    } else {
+        t=new Node;
+        t->data=x;
+        for(i=0;i<index-1;i++) p=p->next;
+        t->next=p->next;
+        t->prev=p;
+        if(p->next) p->next->prev=t;
+        p->next=t;
+    }
+}
+
 int main(){
     int a[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     create(a, 10);
-    cout<<Length(first)<<endl;
+    // cout<<Length(first)<<endl;
+    Display(first);
+    Insert(first, 10, 45);
     Display(first);
     return 0;
 }
