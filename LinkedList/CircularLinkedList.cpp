@@ -33,10 +33,23 @@ void Display(struct Node *h){
     cout<<endl;
 }
 
+// Display Circular LL using recursion
+void RDisplay(struct Node *h){
+    static int flag=0;
+    if(h!=Head || flag==0){
+        flag=1;
+        cout<<h->data<<" ";
+        RDisplay(h->next);
+    }
+    flag=0;
+}
+
+
 int main(){
     int a[] = {1, 2, 3, 4, 5};
     Create(a, 5);
 
-    Display(Head);
+    // Display(Head);
+    RDisplay(Head);
     return 0;
 }
