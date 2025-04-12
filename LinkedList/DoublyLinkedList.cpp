@@ -69,12 +69,35 @@ void Insert(struct Node *p, int index, int x){
     }
 }
 
+// Delete Node in DLL
+int Delete(struct Node *p, int index){
+    struct Node *t;
+    int x=-1;
+    if(index<1 || index>Length(p)){
+        return -1;
+    }
+    if(index==1){
+        first=first->next;
+        if(first->next) first->prev=NULL;
+        x=p->data;
+        delete p;
+    } else {
+        for(int i=0;i<index-1;i++) p=p->next;
+        p->prev->next=p->next;
+        if(p->next) p->next->prev=p->prev;
+        x=p->data;
+        delete p;
+    }
+    return x;
+}
+
 int main(){
     int a[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
     create(a, 10);
     // cout<<Length(first)<<endl;
     Display(first);
-    Insert(first, 10, 45);
+    // Insert(first, 10, 45);
+    cout<<Delete(first,4)<<endl;
     Display(first);
     return 0;
 }
