@@ -274,6 +274,23 @@ void RemoveSortDup(struct Node *p){
     }
 }
 
+// Reversing a LL by copying elements using Array
+void ReverseArray(struct Node *p){
+    struct Node *q=p;
+    int i;
+    int *a = new int[Count(p)];
+    while(q!=NULL){
+        a[i++]=q->data;
+        q=q->next;
+    }
+    q=first; i--;
+    while(q!=NULL){
+        q->data=a[i--];
+        q=q->next;
+    }
+
+}
+
 int main(){
     int A[] = {10,20,20,20,30,40,40,50};
     create(A, 8);
@@ -306,7 +323,8 @@ int main(){
     // InsertSorted(first,5);
     // cout<<Delete(first,6)<<endl;
     // cout<<IsSorted(first);
-    RemoveSortDup(first);
+    // RemoveSortDup(first);
+    ReverseArray(first);
     Display(first);
     return 0;
 }
