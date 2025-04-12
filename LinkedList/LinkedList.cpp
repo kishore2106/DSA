@@ -303,6 +303,16 @@ void ReverseSlide(struct Node *p){
     first=q;
 }
 
+// Reversing a LL using Recursion
+void ReverseRec(struct Node *q, struct Node *p){
+    if(p){
+        ReverseRec(p, p->next);
+        p->next=q;
+    } else {
+        first=q;
+    }
+}
+
 int main(){
     int A[] = {10,20,20,20,30,40,40,50};
     create(A, 8);
@@ -337,7 +347,8 @@ int main(){
     // cout<<IsSorted(first);
     // RemoveSortDup(first);
     // ReverseArray(first);
-    ReverseSlide(first);
+    // ReverseSlide(first);
+    ReverseRec(NULL, first);
     Display(first);
     return 0;
 }
