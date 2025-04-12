@@ -220,6 +220,32 @@ void InsertSorted(struct Node *p, int x){
     }   
 }
 
+// Delete a Node from a given position in LL
+int Delete(struct Node *p, int index){
+    struct Node *q;
+    int x=-1, i;
+
+    if(index < 1 || index > Count(p)){
+        return x;
+    }
+    if(index == 1){
+        x = first->data;
+        q = first;
+        first = first->next;
+        delete q;
+        return x;
+    } else {
+        for(i=0; i<index-1; i++){
+            q=p;
+            p=p->next;
+        }
+        x=p->data;
+        q->next=p->next;
+        delete p;
+        return x;
+    }
+}
+
 int main(){
     int A[] = {10,20,30,40,50};
     create(A, 5);
@@ -247,11 +273,11 @@ int main(){
     Display(first);
     // Insert(first, 0, 10);
     // Insert(first, 3, 20);
-    InsertSorted(first,35);
-    InsertSorted(first,55);
-    InsertSorted(first,5);
+    // InsertSorted(first,35);
+    // InsertSorted(first,55);
+    // InsertSorted(first,5);
+    cout<<Delete(first,6)<<endl;
+
     Display(first);
-
-
     return 0;
 }
