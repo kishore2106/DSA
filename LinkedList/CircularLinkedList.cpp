@@ -44,11 +44,21 @@ void RDisplay(struct Node *h){
     flag=0;
 }
 
+// Length of Circular LL
+int Length(struct Node *h){
+    int count=0;
+    do{
+        count++;
+        h=h->next;
+    } while(h!=Head);
+    return count;
+}
 
 int main(){
     int a[] = {1, 2, 3, 4, 5};
     Create(a, 5);
 
+    // cout<<Length(Head)<<endl;
     // Display(Head);
     RDisplay(Head);
     return 0;
