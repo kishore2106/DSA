@@ -387,6 +387,18 @@ int CheckLoop(struct Node *f){
     }
 }
 
+// Middle Node in LL using 2 pointers
+int Middle(struct Node *p){
+    struct Node *q;
+    q=p;
+    while(q!=NULL && q->next!=NULL){
+        q=q->next;
+        if(q) q=q->next;
+        if(p) p=p->next;
+    }
+    return p->data;
+}
+
 int main(){
     int A[] = {10,20,30,40,50};
     int B[] = {5,15,25,35,45};
@@ -430,18 +442,18 @@ int main(){
     // Display(second);
     // Merge(first, second);
 
-    struct Node *t1, *t2;
-    t1 = first->next->next;
-    t2 = first->next->next->next->next;
-    t2->next=t1;
+    // struct Node *t1, *t2;
+    // t1 = first->next->next;
+    // t2 = first->next->next->next->next;
+    // t2->next=t1;
 
-    if(CheckLoop(first)){
-        cout<<"Loop found"<<endl;
-    } else {
-        cout<<"Linear LL"<<endl;
-    }
-    // Display(first);
-
+    // if(CheckLoop(first)){
+    //     cout<<"Loop found"<<endl;
+    // } else {
+    //     cout<<"Linear LL"<<endl;
+    // }
+    Display(first);
+    cout<<Middle(first);
 
     return 0;
 }
