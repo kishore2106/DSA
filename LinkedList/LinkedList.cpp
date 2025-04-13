@@ -1,6 +1,7 @@
 // Linked List
 
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 struct Node{
@@ -399,6 +400,16 @@ int Middle(struct Node *p){
     return p->data;
 }
 
+// Middle Node in LL using Length
+int MiddleLength(struct Node *p){
+    int len = Count(p);
+    int mid = floor(len/2);
+    for(int i=0; i<mid; i++){
+        p=p->next;
+    }
+    return p->data;
+}
+
 int main(){
     int A[] = {10,20,30,40,50};
     int B[] = {5,15,25,35,45};
@@ -453,7 +464,7 @@ int main(){
     //     cout<<"Linear LL"<<endl;
     // }
     Display(first);
-    cout<<Middle(first);
+    cout<<MiddleLength(first);
 
     return 0;
 }
