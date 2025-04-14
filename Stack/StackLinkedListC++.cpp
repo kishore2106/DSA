@@ -1,4 +1,5 @@
 #include <iostream>
+#include<cstring>
 using namespace std;
  
 class Node{
@@ -95,32 +96,58 @@ int Stack::peek(int index) {
     }
 }
  
-int main() {
- 
-    int A[] = {1, 3, 5, 7, 9};
- 
+int isBalanced(char* exp){
     Stack stk;
  
-    // Populate stack
-    for (int i=0; i<sizeof(A)/sizeof(A[0]); i++){
-        stk.push(A[i]);
+    for (int i=0; i<strlen(exp); i++){
+        if (exp[i] == '('){
+            stk.push(exp[i]);
+        } else if (exp[i] == ')'){
+            if (stk.isEmpty()){
+                return false;
+            } else {
+                stk.pop();
+            }
+        }
     }
+    return stk.isEmpty() ? true : false;
+}
+
+int main() {
  
-    cout << "Stack peek at 3rd: " << stk.peek(3) << endl;
-    cout << "Stack peek at 10th: " << stk.peek(10) << endl;
-    cout << "Stack top: " << stk.stackTop() << endl;
-    cout << "Stack full: " << stk.isFull() << endl;
-    cout << "Stack empty: " << stk.isEmpty() << endl;
+    // int A[] = {1, 3, 5, 7, 9};
  
-    // Pop out elements from stack
-    cout << "Popped: " << flush;
-    for (int i=0; i<sizeof(A)/sizeof(A[0]); i++){
-        cout << stk.pop() << ", " << flush;
-    }
-    cout << endl;
+    // Stack stk;
  
-    // Underflow
-    cout << stk.pop() << endl;
+    // // Populate stack
+    // for (int i=0; i<sizeof(A)/sizeof(A[0]); i++){
+    //     stk.push(A[i]);
+    // }
  
+    // cout << "Stack peek at 3rd: " << stk.peek(3) << endl;
+    // cout << "Stack peek at 10th: " << stk.peek(10) << endl;
+    // cout << "Stack top: " << stk.stackTop() << endl;
+    // cout << "Stack full: " << stk.isFull() << endl;
+    // cout << "Stack empty: " << stk.isEmpty() << endl;
+ 
+    // // Pop out elements from stack
+    // cout << "Popped: " << flush;
+    // for (int i=0; i<sizeof(A)/sizeof(A[0]); i++){
+    //     cout << stk.pop() << ", " << flush;
+    // }
+    // cout << endl;
+ 
+    // // Underflow
+    // cout << stk.pop() << endl;
+ 
+    char E[] = "((a+b)*(c-d))";
+    cout << isBalanced(E) << endl;
+ 
+    char F[] = "((a+b)*(c-d)))";
+    cout << isBalanced(F) << endl;
+ 
+    char G[] = "(((a+b)*(c-d))";
+    cout << isBalanced(G) << endl;
+
     return 0;
 }
