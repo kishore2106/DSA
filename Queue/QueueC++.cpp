@@ -25,7 +25,7 @@ Queue::Queue(){
 Queue::Queue(int size){
     this->size = size;
     front = rear = -1;
-    Q = new int[size];
+    Q = new int[this->size];
 }
 
 Queue::~Queue(){
