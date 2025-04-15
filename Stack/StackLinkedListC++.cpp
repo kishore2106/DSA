@@ -113,6 +113,29 @@ int isBalanced(char* exp){
     return stk.isEmpty() ? true : false;
 }
 
+// balanced paranthesis for all type
+int isBalancedAll(char* exp){
+    Stack stk;
+    char x;
+    for (int i=0; i<strlen(exp); i++){
+        if (exp[i] == '(' || exp[i] == '[' || exp[i] == '{'){
+            stk.push(exp[i]);
+        } else if (exp[i] == ')' || exp[i] == ']' || exp[i] == '}'){
+            x=exp[i];
+            if (stk.isEmpty()){
+                return false;
+            } else if(x==')' && stk.stackTop()=='(') {
+                stk.pop();
+            } else if(x==']' && stk.stackTop()=='[') {
+                stk.pop();
+            } else if(x=='}' && stk.stackTop()=='{') {
+                stk.pop();
+            }
+        }
+    }
+    return stk.isEmpty() ? true : false;
+}
+
 int main() {
  
     // int A[] = {1, 3, 5, 7, 9};
@@ -140,14 +163,14 @@ int main() {
     // // Underflow
     // cout << stk.pop() << endl;
  
-    char E[] = "((a+b)*(c-d))";
+    char E[] = "{([a+b]*[c-d])/e}";
     cout << isBalanced(E) << endl;
  
-    char F[] = "((a+b)*(c-d)))";
-    cout << isBalanced(F) << endl;
+    // char F[] = "((a+b)*(c-d)))";
+    // cout << isBalanced(F) << endl;
  
-    char G[] = "(((a+b)*(c-d))";
-    cout << isBalanced(G) << endl;
+    // char G[] = "(((a+b)*(c-d))";
+    // cout << isBalanced(G) << endl;
 
     return 0;
 }
