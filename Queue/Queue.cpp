@@ -17,6 +17,16 @@ void create(struct  Queue *q, int size){
     q->front=q->rear=-1;
 }
 
+// Inserting element to Queue (Enqueue)
+void enqueue(struct Queue *q, int x){
+    if(q->rear==q->size-1){
+        printf("Queue is full");
+    } else {
+        q->rear++;
+        q->Q[q->rear]=x;
+    }
+}
+
 int main(){
 
     struct Queue q;
