@@ -13,7 +13,7 @@ class Tree{
         void Postorder(Node *p);
         void Inorder(Node *p);
         void LevelOrder(Node *p);
-        void Height(Node *p);
+        int Height(Node *p);
 };
 
 void Tree::CreateTree(){
@@ -91,6 +91,17 @@ void Tree::LevelOrder(Node *p) {
             q.enqueue(root->rchild);
         }
     }
+}
+
+int Tree::Height(Node *root) {
+    int x = 0, y = 0;
+    if (root == NULL)
+        return 0;
+
+    x = Height(root->lchild);
+    y = Height(root->rchild);
+
+    return (x > y) ? x + 1 : y + 1;
 }
 
 int main(){
