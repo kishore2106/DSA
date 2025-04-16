@@ -51,6 +51,30 @@ void Tree::CreateTree(){
     }
 }
 
+void Tree::Preorder(Node *p){
+    if(p){
+        printf("%d ",p->data);
+        Preorder(p->lchild);
+        Preorder(p->rchild);
+    }
+}
+
+void Inorder(Node *p){
+    if(p){
+        Inorder(p->lchild);
+        printf("%d ",p->data);
+        Inorder(p->rchild);
+    }
+}
+
+void Postorder(Node *p){
+    if(p){
+        Postorder(p->lchild);
+        Postorder(p->rchild);
+        printf("%d ",p->data);
+    }
+}
+
 int main(){
 
     return 0;
