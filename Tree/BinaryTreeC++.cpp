@@ -75,6 +75,24 @@ void Postorder(Node *p){
     }
 }
 
+void Tree::LevelOrder(Node *p) {
+    Queue q(100);
+    printf("%d ", root->data);
+    q.enqueue(root);
+
+    while (!q.isEmpty()) {
+        root = q.dequeue();
+        if (root->lchild) {
+            printf("%d ", root->lchild->data);
+            q.enqueue(root->lchild);
+        }
+        if (root->rchild) {
+            printf("%d ", root->rchild->data);
+            q.enqueue(root->rchild);
+        }
+    }
+}
+
 int main(){
 
     return 0;
