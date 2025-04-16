@@ -58,6 +58,14 @@ void inorder(struct Node *p){
     }
 }
 
+void postorder(struct Node *p){
+    if(p){
+        postorder(p->lchild);
+        postorder(p->rchild);
+        printf("%d ",p->data);
+    }
+}
+
 int main(){
 
     createTree();
@@ -66,6 +74,6 @@ int main(){
     printf("\n");
     inorder(root);
     printf("\n");
-
+    postorder(root);
     return 0;
 }
