@@ -59,7 +59,7 @@ void Tree::Preorder(Node *p){
     }
 }
 
-void Inorder(Node *p){
+void Tree::Inorder(Node *p){
     if(p){
         Inorder(p->lchild);
         printf("%d ",p->data);
@@ -67,7 +67,7 @@ void Inorder(Node *p){
     }
 }
 
-void Postorder(Node *p){
+void Tree::Postorder(Node *p){
     if(p){
         Postorder(p->lchild);
         Postorder(p->rchild);
@@ -105,6 +105,21 @@ int Tree::Height(Node *root) {
 }
 
 int main(){
+
+    Tree t;
+    t.CreateTree();
+
+    cout << "Preorder: ";
+    t.Preorder(t.root);
+    cout << endl;
+
+    cout << "Inorder: ";
+    t.Inorder(t.root);
+    cout << endl;
+
+    cout << "Postorder: ";
+    t.Postorder(t.root);
+    cout << endl << endl;
 
     return 0;
 }
