@@ -22,7 +22,12 @@ class Queue{
         void enqueue(Node* x);
         Node* dequeue();
         void display();
+        int isEmpty();
 };
+
+int Queue::isEmpty(){
+    return front==rear;
+}
 
 Queue::Queue(){
     size = 10;
