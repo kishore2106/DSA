@@ -141,6 +141,17 @@ void LevelOrder(struct Node *root){
 
 }
 
+// Counting Number of Nodes in a Binary Tree
+int count(struct Node * root){
+    int x, y;
+    if(root!=NULL){
+        x = count(root->lchild);
+        y = count(root->rchild);
+        return x + y + 1;
+    }
+    return 0;
+}
+
 int main(){
 
     createTree();
@@ -152,5 +163,7 @@ int main(){
     PostorderIter(root);
     printf("\n");
     LevelOrder(root);
+
+    printf("\nNumber of Nodes %d",count(root));
     return 0;
 }
