@@ -3,6 +3,7 @@
 #include<stdio.h>
 // #include<Queue.h>
 #include "Queue.h"
+#include "Stack.h"
 
 struct Node * root=NULL;
 
@@ -66,14 +67,30 @@ void postorder(struct Node *p){
     }
 }
 
+// Iterative version Tree Traversal
+void IPreorderIter(struct Node *t){
+    struct Stack st;
+    createStack(&st, 100);
+    while(t!=NULL || !isEmpty(&st)){
+        if(t!=NULL){
+            printf("%d ",t->data);
+            push(&st, t);
+            t=t->lchild;
+        } else {
+            t=pop(&st);
+            t=t->rchild;
+        }
+    }
+}
+
 int main(){
 
     createTree();
 
-    preorder(root);
+    IPreorderIter(root);
     printf("\n");
-    inorder(root);
-    printf("\n");
-    postorder(root);
+    // inorder(root);
+    // printf("\n");
+    // postorder(root);
     return 0;
 }
