@@ -83,14 +83,30 @@ void IPreorderIter(struct Node *t){
     }
 }
 
+// Inorder Traversal using Stack
+void InorderIter(struct Node *t){
+    struct Stack st;
+    createStack(&st, 100);
+    while(t!=NULL || !isEmpty(&st)){
+        if(t!=NULL){
+            push(&st, t);
+            t=t->lchild;
+        } else {
+            t=pop(&st);
+            printf("%d ",t->data);
+            t=t->rchild;
+        }
+    }
+}
+
 int main(){
 
     createTree();
 
     IPreorderIter(root);
     printf("\n");
-    // inorder(root);
-    // printf("\n");
+    InorderIter(root);
+    printf("\n");
     // postorder(root);
     return 0;
 }
