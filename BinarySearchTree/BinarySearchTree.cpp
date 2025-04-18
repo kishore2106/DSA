@@ -104,7 +104,15 @@ int Height(Node *p) {
     y = Height(p->rchild);
     return x > y ? x + 1 : y + 1;
 }
- 
+
+// InPredecessor for a Node
+Node* InPre(Node *p) {
+    while (p && p->rchild != NULL){
+        p = p->rchild;
+    }
+    return p;
+}
+
 int main(){
     // Insert(50);
     // Insert(30);
