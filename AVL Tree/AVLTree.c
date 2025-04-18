@@ -43,6 +43,38 @@ struct Node* LLRotation(struct Node *p){
     return pl;
 }
 
+// LRRotation for AVL Tree
+struct Node* LRRotation(struct Node *p){
+    struct Node *pl=p->lchild;
+    struct Node *plr=pl->rchild;
+
+    pl->rchild=plr->lchild;
+    p->lchild=plr->rchild;
+    plr->lchild=pl;
+    plr->rchild=p;
+
+    p->height=NodeHeight(p);
+    pl->height=NodeHeight(pl);
+    plr->height=NodeHeight(plr);
+
+    if(root==p)
+        root=plr;
+
+    return plr;
+}
+
+// RRRotation for AVL Tree
+struct Node* RRRotation(struct Node *p){
+    
+    return NULL;
+}
+
+// RRotation for AVL Tree
+struct Node* RLRotation(struct Node *p){
+    
+    return NULL;
+}
+
 // Inserting a node in AVL Tree
 struct Node* RInsert(struct Node* p, int key){
     struct Node *t;
@@ -74,7 +106,9 @@ struct Node* RInsert(struct Node* p, int key){
 }
 
 int main(){
-
+    root=RInsert(&root,10);
+    RInsert(&root,5);
+    RInsert(&root,2);
 
     return 0;
 }
