@@ -61,6 +61,18 @@ Node* Search(int key){
     return NULL;
 }
 
+// Recursive Search
+Node* RSearch(struct Node *p, int key){
+    if(p==NULL) return NULL;
+    if(p->data==key){
+        return p;
+    } else if(key<p->data){
+        return RSearch(p->lchild, key);
+    } else{
+        return RSearch(p->rchild, key);
+    }
+}
+
 int main(){
     Insert(50);
     Insert(30);
@@ -71,13 +83,15 @@ int main(){
     Insert(80);
     Inorder(root);
     printf("\n");
-    struct Node *res=Search(30);
+    // struct Node *res=Search(30);
+    struct Node *res=RSearch(root,30);
     if(res!=NULL){
         printf("Key Found");
     } else {
         printf("Key Not Found");
     }
-    res=Search(38);
+    // res=Search(38);
+    res=RSearch(root,48);
     printf("\n");
     if(res!=NULL){
         printf("Key Found");
