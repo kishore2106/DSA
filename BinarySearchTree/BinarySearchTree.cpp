@@ -37,6 +37,26 @@ void Insert(int key){
     else r->rchild=p;
 }
 
+// Recursively inserting a node in the binary search tree
+Node* RInsert(struct Node *p, int key){
+    struct Node *t = NULL;
+
+    if (p == NULL){
+        t = (struct Node*)malloc(sizeof(struct Node));
+        t->data = key;
+        t->lchild = t->rchild = NULL;
+        return t;  // Return the new node
+    }
+
+    if (key < p->data)
+        p->lchild = RInsert(p->lchild, key);
+    else if (key > p->data)
+        p->rchild = RInsert(p->rchild, key);
+    // If key == p->data, do nothing (no duplicates)
+
+    return p;  // Return the original root pointer
+}
+
 // Inorder traversal of the binary search tree
 void Inorder(struct Node *p){
     if(p){
@@ -61,7 +81,7 @@ Node* Search(int key){
     return NULL;
 }
 
-// Recursive Search
+// Recursive Binary Search function
 Node* RSearch(struct Node *p, int key){
     if(p==NULL) return NULL;
     if(p->data==key){
@@ -74,13 +94,20 @@ Node* RSearch(struct Node *p, int key){
 }
 
 int main(){
-    Insert(50);
-    Insert(30);
-    Insert(20);
-    Insert(40);
-    Insert(70);
-    Insert(60);
-    Insert(80);
+    // Insert(50);
+    // Insert(30);
+    // Insert(20);
+    // Insert(40);
+    // Insert(70);
+    // Insert(60);
+    // Insert(80);
+    root = RInsert(root,50);
+    root = RInsert(root,30);
+    root = RInsert(root,20);
+    root = RInsert(root,40);
+    root = RInsert(root,70);
+    root = RInsert(root,60);
+    root = RInsert(root,80);
     Inorder(root);
     printf("\n");
     // struct Node *res=Search(30);
