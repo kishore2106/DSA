@@ -71,8 +71,22 @@ struct Node* RRRotation(struct Node *p){
 
 // RRotation for AVL Tree
 struct Node* RLRotation(struct Node *p){
-    
-    return NULL;
+    struct Node *pr=p->rchild;
+    struct Node *prl=pr->lchild;
+
+    p->rchild=prl->lchild;
+    pr->lchild=prl->rchild;
+    prl->lchild=p;
+    prl->rchild=pr;
+
+    p->height=NodeHeight(p);
+    pr->height=NodeHeight(pr);
+    prl->height=NodeHeight(prl);
+
+    if(p==root)
+        return prl;
+
+    return prl;
 }
 
 // Inserting a node in AVL Tree
