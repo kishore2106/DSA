@@ -121,6 +121,36 @@ Node* InSucce(Node *p) {
     return p;
 }
 
+
+// Delete Node in Binary Search Tree
+Node* Delete(struct Node* p, int key){
+    struct Node* q;
+    if(p==NULL) return NULL;
+    if (p->lchild == NULL && p->rchild == NULL){
+        if (p == root){
+            root = NULL;
+        }
+        free(p);
+        return NULL;
+    }
+    if (key < p->data){
+        p->lchild = Delete(p->lchild, key);
+    } else if (key > p->data){
+        p->rchild = Delete(p->rchild, key);
+    } else {
+        if (Height(p->lchild) > Height(p->rchild)){
+            q = InPre(p->lchild);
+            p->data = q->data;
+            p->lchild = Delete(p->lchild, q->data);
+        } else {
+            q = InSucce(p->rchild);
+            p->data = q->data;
+            p->rchild = Delete(p->rchild, q->data);
+        }
+    }
+    return p;
+}
+
 int main(){
     // Insert(50);
     // Insert(30);
@@ -138,7 +168,7 @@ int main(){
     RInsert(root,80);
     Inorder(root);
     printf("\n");
-    // root=Delete(root, 20);
+    root=Delete(root, 20);
     Inorder(root);
     printf("\n");
     // struct Node *res=Search(30);
