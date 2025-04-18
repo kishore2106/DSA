@@ -93,6 +93,18 @@ Node* RSearch(struct Node *p, int key){
     }
 }
 
+// Height of BinaryTree
+int Height(Node *p) {
+    int x;
+    int y;
+    if (p == NULL){
+        return 0;
+    }
+    x = Height(p->lchild);
+    y = Height(p->rchild);
+    return x > y ? x + 1 : y + 1;
+}
+ 
 int main(){
     // Insert(50);
     // Insert(30);
@@ -102,29 +114,32 @@ int main(){
     // Insert(60);
     // Insert(80);
     root = RInsert(root,50);
-    root = RInsert(root,30);
-    root = RInsert(root,20);
-    root = RInsert(root,40);
-    root = RInsert(root,70);
-    root = RInsert(root,60);
-    root = RInsert(root,80);
+    RInsert(root,30);
+    RInsert(root,20);
+    RInsert(root,40);
+    RInsert(root,70);
+    RInsert(root,60);
+    RInsert(root,80);
+    Inorder(root);
+    printf("\n");
+    // root=Delete(root, 20);
     Inorder(root);
     printf("\n");
     // struct Node *res=Search(30);
-    struct Node *res=RSearch(root,30);
-    if(res!=NULL){
-        printf("Key Found");
-    } else {
-        printf("Key Not Found");
-    }
-    // res=Search(38);
-    res=RSearch(root,48);
-    printf("\n");
-    if(res!=NULL){
-        printf("Key Found");
-    } else {
-        printf("Key Not Found");
-    }
+    // struct Node *res=RSearch(root,30);
+    // if(res!=NULL){
+    //     printf("Key Found");
+    // } else {
+    //     printf("Key Not Found");
+    // }
+    // // res=Search(38);
+    // res=RSearch(root,48);
+    // printf("\n");
+    // if(res!=NULL){
+    //     printf("Key Found");
+    // } else {
+    //     printf("Key Not Found");
+    // }
 
 
     return 0;
