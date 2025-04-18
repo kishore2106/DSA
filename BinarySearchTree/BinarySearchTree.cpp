@@ -113,6 +113,14 @@ Node* InPre(Node *p) {
     return p;
 }
 
+// InSuccessor for a Node
+Node* InSucce(Node *p) {
+    while (p && p->lchild != NULL){
+        p = p->lchild;
+    }
+    return p;
+}
+
 int main(){
     // Insert(50);
     // Insert(30);
