@@ -79,7 +79,7 @@ struct Node* RRRotation(struct Node *p){
     return pr;
 }
 
-// RRotation for AVL Tree
+// RLRotation for AVL Tree
 struct Node* RLRotation(struct Node *p){
     struct Node *pr=p->rchild;
     struct Node *prl=pr->lchild;
