@@ -9,6 +9,15 @@ struct Node{
     struct Node* rchild;
 }*root=NULL;
 
+// Node Height of AVL Tree
+int NodeHeight(struct Node *p){
+    int hl, hr;
+    hl=p && p->lchild?p->lchild->height:0;
+    hr=p && p->rchild?p->rchild->height:0;
+
+    return hl>hr?hl+1:hr+1;
+}
+
 // Inserting a node in AVL Tree
 struct Node* RInsert(struct Node* p, int key){
     struct Node *t;
