@@ -42,20 +42,43 @@ void Print(T& vec, int n){
     cout << "]" << endl;
 }
 
+template <class T>
+void Print(T& vec, int n, char c){
+    cout << c << ": [" << flush;
+    for (int i=0; i<n; i++){
+        cout << vec[i] << flush;
+        if (i < n-1){
+            cout << ", " << flush;
+        }
+    }
+    cout << "]" << endl;
+}
+
+//Create Heap
+void createHeap(int A[], int n){
+    for (int i=0; i<n; i++){
+        InsertA(A, i);
+    }
+}
+
 int main(){
 
-    int a[] = {45, 35, 15, 30, 10, 12, 6, 5, 20, 50};
-    InsertA(a, 9);
-    Print(a, sizeof(a)/sizeof(a[0]));
-    cout << endl;
+    // int a[] = {45, 35, 15, 30, 10, 12, 6, 5, 20, 50};
+    // InsertA(a, 9);
+    // Print(a, sizeof(a)/sizeof(a[0]));
+    // cout << endl;
  
-    // STL based
-    vector<int> v = {45, 35, 15, 30, 10, 12, 6, 5, 20};
-    Print(v, v.size());
-    v.reserve(15);  // Reserve space for 15 elements
+    // // STL based
+    // vector<int> v = {45, 35, 15, 30, 10, 12, 6, 5, 20};
+    // Print(v, v.size());
+    // v.reserve(15);  // Reserve space for 15 elements
  
-    Insert(v, 50);
-    Print(v, v.size());
+    // Insert(v, 50);
+    // Print(v, v.size());
+
+    cout << "Create Heap" << endl;
+    int b[] = {10, 20, 30, 25, 5, 40, 35};
+    Print(b, sizeof(b)/sizeof(b[0]), 'b');
  
     return 0;
 }
