@@ -61,6 +61,14 @@ void createHeap(int A[], int n){
     }
 }
 
+//Create Heap using vector
+void CreateHeap(vector<int>& vec, int A[], int n){
+    // O(n log n)
+    for (int i=0; i<n; i++){
+        Insert(vec, A[i]);
+    }
+}
+
 int main(){
 
     // int a[] = {45, 35, 15, 30, 10, 12, 6, 5, 20, 50};
@@ -78,6 +86,14 @@ int main(){
 
     cout << "Create Heap" << endl;
     int b[] = {10, 20, 30, 25, 5, 40, 35};
+    Print(b, sizeof(b)/sizeof(b[0]), 'b');
+
+    vector<int> v;
+    CreateHeap(v, b, sizeof(b)/sizeof(b[0]));
+    Print(v, v.size(), 'v');
+ 
+    cout << "Inplace Insert" << endl;
+    createHeap(b, sizeof(b)/sizeof(b[0]));
     Print(b, sizeof(b)/sizeof(b[0]), 'b');
  
     return 0;
