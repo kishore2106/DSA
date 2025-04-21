@@ -49,6 +49,21 @@ void SelectionSort(int A[], int n){
     }
 }
 
+// Quick Sort
+// Paritioning
+int Partition(int A[], int l, int h){
+    int pivot = A[l];
+    int i=A[l], j=A[h];
+
+    do{
+        do{i++;}while(A[i]<=A[j]);
+        do{j--;}while(A[j]>pivot);
+        if(i<j) Swap(&A[i], &A[j]);
+    }while(i<j);
+    Swap(&A[l], &A[j]);
+    return j;
+}
+
 int main(){
     int A[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(A)/sizeof(A[0]);
