@@ -53,10 +53,10 @@ void SelectionSort(int A[], int n){
 // Paritioning
 int Partition(int A[], int l, int h){
     int pivot = A[l];
-    int i=A[l], j=A[h];
+    int i=l, j=h;
 
     do{
-        do{i++;}while(A[i]<=A[j]);
+        do{i++;}while(A[i]<=pivot);
         do{j--;}while(A[j]>pivot);
         if(i<j) Swap(&A[i], &A[j]);
     }while(i<j);
@@ -64,14 +64,26 @@ int Partition(int A[], int l, int h){
     return j;
 }
 
+// Quick Sort Recursive
+void QuickSort(int A[], int l, int h){
+    int j;
+    if(l<h){
+        j=Partition(A, l, h);
+        QuickSort(A, l, j);
+        QuickSort(A, j+1, h);
+    }
+}
+
 int main(){
-    int A[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(A)/sizeof(A[0]);
+    // int A[] = {64, 34, 25, 12, 22, 11, 90};
+    // int n = sizeof(A)/sizeof(A[0]);
     // BubbleSort(A, n);
     // InsertionSort(A, n);
-    SelectionSort(A, n);
+    // SelectionSort(A, n);
+    int A[] = {64, 34, 25, 12, 22, 11, 90, __INT32_MAX__};
+    QuickSort(A, 0, 7);
 
-    for(int i=0; i<n; i++){
+    for(int i=0; i<7; i++){
         printf("%d ", A[i]);
     }
 
