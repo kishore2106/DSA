@@ -36,11 +36,25 @@ void InsertionSort(int A[], int n){
     }
 }
 
+// Selection Sort
+void SelectionSort(int A[], int n){
+    int i, j, k;
+    for(i=0; i<n-1; i++){
+        for(j=k=i; j<n; j++){
+            if(A[j]<A[k]){
+                k=j;
+            }
+        }
+        Swap(&A[i], &A[k]);
+    }
+}
+
 int main(){
     int A[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(A)/sizeof(A[0]);
     // BubbleSort(A, n);
-    InsertionSort(A, n);
+    // InsertionSort(A, n);
+    SelectionSort(A, n);
 
     for(int i=0; i<n; i++){
         printf("%d ", A[i]);
