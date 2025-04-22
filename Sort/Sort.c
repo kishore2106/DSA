@@ -77,7 +77,7 @@ void QuickSort(int A[], int l, int h){
 // Merge Sort
 // Merge Impl
 void Merge(int A[], int l, int mid, int h){
-    int i,j,k;
+    int i=l,j=mid+1,k=l;
     int B[100];
     
     while(i<=mid && j<=h){
@@ -97,16 +97,33 @@ void Merge(int A[], int l, int mid, int h){
     }
 }
 
+// Merge Sort Impl Iterative
+void IMergeSort(int A[], int n){
+    int i,l,h,mid,p;
+    for(p=2; p<=n; p=p*2){
+        for(i=0; p+i-1<n; i=p+i){
+            l=i;
+            h=p+i-1;
+            mid=(l+h)/2;
+            Merge(A, l, mid, h);
+        }
+    }
+    if(p/2<n){
+        Merge(A, 0, p/2-1, n);
+    }
+}
+
 int main(){
-    // int A[] = {64, 34, 25, 12, 22, 11, 90};
-    // int n = sizeof(A)/sizeof(A[0]);
+    int A[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(A)/sizeof(A[0]);
     // BubbleSort(A, n);
     // InsertionSort(A, n);
     // SelectionSort(A, n);
-    int A[] = {64, 34, 25, 12, 22, 11, 90, __INT32_MAX__};
-    QuickSort(A, 0, 7);
+    // int A[] = {64, 34, 25, 12, 22, 11, 90, __INT32_MAX__};
+    // QuickSort(A, 0, 7);
+    IMergeSort(A, n);
 
-    for(int i=0; i<7; i++){
+    for(int i=0; i<n; i++){
         printf("%d ", A[i]);
     }
 
