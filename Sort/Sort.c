@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 // Swap
 void Swap(int *x, int *y) {
@@ -136,6 +137,27 @@ int MaxArray(int A[], int n){
 
 }
 
+// Count Sort
+void CountSort(int A[], int n){
+    int max;
+    int i,j;
+    int *c;
+    max=MaxArray(A, n);
+    c=(int*)malloc((max+1)*sizeof(int));
+    for(i=0; i<max+1; i++) c[i]=0;
+    for(i=0; i<n; i++) c[A[i]]++;
+    i=j=0;
+    while(j<max+1){
+        if(c[j]>0){
+            A[i++]=j;
+            c[j]--;
+        } else{
+            j++;
+        }
+    }
+    
+}
+
 int main(){
     int A[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(A)/sizeof(A[0]);
@@ -150,7 +172,12 @@ int main(){
     // for(int i=0; i<n; i++){
     //     printf("%d ", A[i]);
     // }
-    printf("Max :%d",MaxArray(A, n));
+    // printf("Max :%d",MaxArray(A, n));
+    CountSort(A, n);
+    
+    for(int i=0; i<n; i++){
+        printf("%d ", A[i]);
+    }
 
     return 0;
 }
