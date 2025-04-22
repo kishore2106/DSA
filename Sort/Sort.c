@@ -124,6 +124,18 @@ void RMergeSort(int A[], int l, int h){
     }
 }
 
+// Max of an Array
+int MaxArray(int A[], int n){
+    int max=A[0];
+    for(int i=1; i<n; i++){
+        if(A[i]>max){
+            max=A[i];
+        }
+    }
+    return max;
+
+}
+
 int main(){
     int A[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(A)/sizeof(A[0]);
@@ -133,11 +145,12 @@ int main(){
     // int A[] = {64, 34, 25, 12, 22, 11, 90, __INT32_MAX__};
     // QuickSort(A, 0, 7);
     // IMergeSort(A, n);
-    RMergeSort(A, 0, n-1);
+    // RMergeSort(A, 0, n-1);
 
-    for(int i=0; i<n; i++){
-        printf("%d ", A[i]);
-    }
+    // for(int i=0; i<n; i++){
+    //     printf("%d ", A[i]);
+    // }
+    printf("Max :%d",MaxArray(A, n));
 
     return 0;
 }
